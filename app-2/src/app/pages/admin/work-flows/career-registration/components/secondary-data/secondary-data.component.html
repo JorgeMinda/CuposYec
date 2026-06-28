@@ -1,0 +1,40 @@
+<div class="custom-form-card">
+    <form class="custom-form-grid md:grid-cols-12">
+        <!-- title -->
+        <div class="custom-form-section md:col-span-12">
+            <h4>
+                Datos Principales
+            </h4>
+        </div>
+
+        <!-- code -->
+        <!--        @if (isCodeRequired()) {-->
+        <div class="custom-form-field md:col-span-6">
+            <label
+                appLabel
+                for="code"
+                label="Código"
+                [field]="codeField">
+            </label>
+
+            <input pInputText id="code" [formField]="codeField">
+
+            <small [appErrorMessage]="$any(codeField)"></small>
+        </div>
+        <!--        }-->
+        <!-- name -->
+
+        <div class="custom-form-field md:col-span-6">
+            <label
+                appLabel
+                for="shortName"
+                label="Nombre corto de la carrera"
+                [field]="shortNameField">
+            </label>
+
+            <input pInputText id="shortName" [formField]="shortNameField">
+
+            <small [appErrorMessage]="$any(shortNameField)"></small>
+        </div>
+    </form>
+</div>

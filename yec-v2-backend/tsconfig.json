@@ -1,0 +1,133 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "esModuleInterop": true,
+    "paths": {
+      "@auth/constants": [
+        "./src/modules/auth/constants"
+      ],
+      "@auth/controllers": [
+        "./src/modules/auth/controllers"
+      ],
+      "@auth/decorators": [
+        "./src/modules/auth/decorators"
+      ],
+      "@auth/dto": [
+        "./src/modules/auth/dto"
+      ],
+      "@auth/entities": [
+        "./src/modules/auth/entities"
+      ],
+      "@auth/enums": [
+        "./src/modules/auth/enums"
+      ],
+      "@auth/guards": [
+        "./src/modules/auth/guards"
+      ],
+      "@auth/models": [
+        "./src/modules/auth/models"
+      ],
+      "@auth/modules": [
+        "./src/modules/auth/auth.module"
+      ],
+      "@auth/providers": [
+        "./src/modules/auth/providers"
+      ],
+      "@auth/services": [
+        "./src/modules/auth/services"
+      ],
+      "@auth/strategies": [
+        "./src/modules/auth/strategies"
+      ],
+      "@common/controllers": [
+        "./src/modules/common/controllers"
+      ],
+      "@common/dto": [
+        "./src/modules/common/dto"
+      ],
+      "@common/entities": [
+        "./src/modules/common/entities"
+      ],
+      "@common/modules": [
+        "./src/modules/common"
+      ],
+      "@common/providers": [
+        "./src/modules/common/providers"
+      ],
+      "@common/services": [
+        "./src/modules/common/services"
+      ],
+      "@core/controllers": [
+        "./src/modules/core/controllers"
+      ],
+      "@core/dto": [
+        "./src/modules/core/dto"
+      ],
+      "@core/entities": [
+        "./src/modules/core/entities"
+      ],
+      "@core/modules": [
+        "./src/modules/core"
+      ],
+      "@core/providers": [
+        "./src/modules/core/providers"
+      ],
+      "@database/seeders": [
+        "./src/database/seeders"
+      ],
+      "@core/services": [
+        "./src/modules/core/services"
+      ],
+      "@config": [
+        "./src/config"
+      ],
+      "@config/module": [
+        "./src/config"
+      ],
+      "@database": [
+        "./src/database"
+      ],
+      "@interceptors": [
+        "./src/interceptors"
+      ],
+      "@exceptions": [
+        "./src/exceptions"
+      ],
+      "@middlewares": [
+        "./src/middlewares"
+      ],
+
+      "@shared/enums": [
+        "./src/shared/enums"
+      ],
+      "@shared/helpers": [
+        "./src/shared/helpers"
+      ],
+      "@shared/models": [
+        "./src/shared/models"
+      ],
+      "@shared/pipes": [
+        "./src/shared/pipes"
+      ],
+      "@shared/validation": [
+        "./src/shared/validation"
+      ]
+    }
+  }
+}

@@ -1,0 +1,133 @@
+<!-- src/app/pages/admin/work-flows/enrollment-capacity/components/capacity-matrix/capacity-matrix.component.html -->
+<div class="flex gap-6 flex-wrap w-full mb-6">
+    @for (nivel of store.sortedLevels(); track nivel.id) {
+        <div 
+            (click)="store.selectLevel(nivel.id)"
+            [class]="store.state().selectedLevelId === nivel.id ? 'bg-blue-50 border-blue-500' : 'bg-white border-slate-300'"
+            class="flex-1 min-w-[180px] max-w-[260px] p-4 rounded-xl border-2 border-solid cursor-pointer flex items-center justify-between transition-all user-select-none hover:shadow-md">
+            
+            <div class="flex flex-col gap-0.5">
+                <span class="text-xs font-semibold text-slate-500 uppercase">Nivel</span>
+                <span class="text-lg font-bold text-slate-900">{{ nivel.name }}</span>
+            </div>
+            <div [class]="store.state().selectedLevelId === nivel.id ? 'text-blue-500' : 'text-slate-400'">
+                <i class="pi pi-clone text-base"></i>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="flex gap-6 flex-wrap w-full">
+    <!-- Matriz Principal -->
+    <div class="flex-[2] min-w-[450px] bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <h3 class="text-slate-900 mb-6 text-lg font-bold">
+            Distribución y Disponibilidad - <span class="text-blue-600">{{ store.activeLevelName() }}</span>
+        </h3>
+
+        <div class="flex flex-col gap-7">
+            @for (fila of store.matrixRows(); track fila.jornadaId) {
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <span class="font-extrabold text-sm text-slate-800 block mb-4 uppercase tracking-wide border-l-4 border-blue-500 pl-2">
+                        Jornada {{ fila.jornadaNombre }}
+                    </span>
+                    
+                    @if (fila.bloquesHorarios[0].celdas.length === 0) {
+                        <span class="text-sm text-slate-400 italic block p-1">Sin paralelos en esta jornada.</span>
+                    }
+
+                    <div class="flex flex-wrap gap-3">
+                        @for (celda of fila.bloquesHorarios[0].celdas; track celda.id) {
+                            <div 
+                                (click)="store.openModal(celda)"
+                                [class]="celda.colorSemaforo === 'verde' ? 'bg-green-50 border-green-500' : celda.colorSemaforo === 'naranja' ? 'bg-orange-50 border-orange-500' : 'bg-red-50 border-red-500'"
+                                class="border border-solid rounded-lg p-3 min-w-[135px] flex-1 max-w-[180px] cursor-pointer flex flex-col gap-1 transition-transform hover:scale-105">
+                                
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-slate-900 text-sm">{{ celda.paralelo }}</span>
+                                    <span [class]="celda.colorSemaforo === 'verde' ? 'bg-green-500' : celda.colorSemaforo === 'naranja' ? 'bg-orange-500' : 'bg-red-500'" class="w-2 h-2 rounded-full inline-block"></span>
+                                </div>
+                                <div class="mt-1 text-xs text-slate-600 font-medium">
+                                    Inscritos: <strong class="text-slate-900">{{ celda.estudiantesContados }}</strong> / {{ celda.cupoMaximo }}
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Panel Lateral Métricas -->
+    <div class="flex-1 min-w-[280px] flex flex-col gap-6">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <h3 class="text-slate-500 mb-4 text-sm font-bold uppercase tracking-wider">Métricas del Nivel</h3>
+            <div class="flex flex-col gap-3">
+                <div class="flex justify-between border-b border-dashed border-slate-200 pb-2">
+                    <span class="text-slate-600 font-medium">Cupos Asignados:</span>
+                    <span class="font-bold text-blue-600">{{ store.totalCupos() }}</span>
+                </div>
+                <div class="flex justify-between border-b border-dashed border-slate-200 pb-2">
+                    <span class="text-slate-600 font-medium">Estudiantes Ocupando:</span>
+                    <span class="font-bold text-orange-500">{{ store.totalOcupados() }}</span>
+                </div>
+                <div class="flex justify-between pb-1">
+                    <span class="text-slate-600 font-medium">Disponibilidad:</span>
+                    <span class="font-bold text-green-500">{{ store.totalDisponibles() }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex justify-center items-center relative h-60">
+            <p-chart type="doughnut" [data]="store.chartData()" [options]="chartOptions" styleClass="w-full h-full"></p-chart>
+            <div class="absolute flex flex-col items-center text-center pointer-events-none">
+                <span class="text-3xl font-black text-slate-900">{{ store.porcentajeOcupacion() }}%</span>
+                <span class="text-xs text-slate-500 font-bold uppercase">Ocupado</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal CRUD -->
+<p-dialog 
+    header="Gestión de Cupos del Paralelo" 
+    [(visible)]="store.state().showModal" 
+    [modal]="true" 
+    [style]="{ width: '420px' }" 
+    [resizable]="false"
+    [draggable]="false">
+    
+    @if (store.state().modalCell) {
+        <div class="flex flex-col gap-4 pt-2">
+            <div class="bg-slate-100 p-3 rounded-lg">
+                <span class="block text-xs text-slate-600 font-semibold">CONFIGURACIÓN DEL CURSO:</span>
+                <strong class="text-base text-slate-900">{{ store.state().modalCell?.paralelo }} - {{ store.state().modalCell?.horario }}</strong>
+                <span class="block text-sm text-slate-500 mt-1">Alumnos Inscritos actualmente: {{ store.state().modalCell?.estudiantesContados }}</span>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+                <label class="font-bold text-sm text-slate-700">Capacidad Máxima (Cupos)</label>
+                <input 
+                    pInputText 
+                    type="number" 
+                    [ngModel]="store.state().modalCapacityInput"
+                    (ngModelChange)="store.setModalInput($event)"
+                    class="w-full text-base font-semibold p-2 border border-slate-300 rounded-md" />
+            </div>
+
+            <div class="flex justify-between gap-3 mt-3">
+                <p-button 
+                    label="Borrar Cupo" 
+                    icon="pi pi-trash" 
+                    severity="danger" 
+                    [disabled]="store.state().modalCell!.estudiantesContados > 0"
+                    (onClick)="store.deleteCapacity()">
+                </p-button>
+
+                <div class="flex gap-2">
+                    <p-button label="Cancelar" severity="secondary" (onClick)="store.closeModal()"></p-button>
+                    <p-button label="Guardar" icon="pi pi-check" severity="success" (onClick)="store.saveCapacity()"></p-button>
+                </div>
+            </div>
+        </div>
+    }
+</p-dialog>

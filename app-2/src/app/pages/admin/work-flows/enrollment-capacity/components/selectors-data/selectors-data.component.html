@@ -1,0 +1,29 @@
+<!-- src/app/pages/admin/work-flows/enrollment-capacity/components/selectors-data/selectors-data.component.html -->
+<div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 mb-6 flex flex-wrap gap-6 items-center">
+    
+    <div class="flex-1 min-w-[240px] flex flex-col gap-1.5">
+        <label class="font-bold text-xs text-slate-500 uppercase tracking-wider">Carrera / Programa</label>
+        <p-select 
+            [options]="store.careers()" 
+            optionLabel="name" 
+            optionValue="id" 
+            [ngModel]="store.state().selectedCareerId"
+            (onChange)="store.selectCareer($event.value)"
+            placeholder="Seleccione..."
+            styleClass="w-full">
+        </p-select>
+    </div>
+
+    <div class="flex-1 min-w-[240px] flex flex-col gap-1.5">
+        <label class="font-bold text-xs text-slate-500 uppercase tracking-wider">Distribución de Docentes</label>
+        <p-select 
+            [options]="store.teacherDistributions()" 
+            optionLabel="name" 
+            optionValue="id" 
+            [ngModel]="store.state().selectedTeacherDistributionId"
+            (onChange)="store.selectDistribution($event.value)"
+            placeholder="Seleccione..."
+            styleClass="w-full">
+        </p-select>
+    </div>
+</div>
