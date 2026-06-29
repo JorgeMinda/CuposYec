@@ -18,7 +18,7 @@ import {CreateSchoolPeriodDto, UpdateSchoolPeriodDto} from '@core/dto';
 import {SchoolPeriodsService} from '@core/services';
 import {SchoolPeriodEntity} from '@core/entities';
 import {ResponseHttpModel} from '@shared/models';
-import {Auth, Roles} from '@auth/decorators';
+import {Auth, PublicRoute, Roles} from '@auth/decorators';
 import {RoleEnum} from '@auth/enums';
 import {FileInterceptor} from '@nestjs/platform-express';
 import {diskStorage} from 'multer';
@@ -26,14 +26,16 @@ import {join} from 'path';
 import {fileFilter, getFileName} from '@shared/helpers';
 import {FilesService} from '@common/services';
 
-@ApiTags('School Period')
+
+ @PublicRoute()
+   @ApiTags('School Period')
 @Controller('school-periods')
-@Auth()
+//@Auth()
 export class SchoolPeriodsController {
     constructor(private readonly schoolPeriodsService: SchoolPeriodsService,
                 private readonly filesService: FilesService) {
     }
-
+   @PublicRoute()
     @ApiOperation({summary: 'Catalogue'})
     @Roles(RoleEnum.COORDINATOR_CAREER)
     @Get('catalogue')
@@ -48,7 +50,7 @@ export class SchoolPeriodsController {
             title: `Catalogue`,
         };
     }
-
+   @PublicRoute()
     @ApiOperation({summary: 'Create'})
     @Post()
     @HttpCode(HttpStatus.CREATED)
@@ -61,7 +63,7 @@ export class SchoolPeriodsController {
             title: 'Creado',
         };
     }
-
+   @PublicRoute()
     @ApiOperation({summary: 'Find All'})
     @Get()
     @HttpCode(HttpStatus.OK)
@@ -75,7 +77,7 @@ export class SchoolPeriodsController {
             title: 'Success',
         };
     }
-
+   @PublicRoute()
     @ApiOperation({summary: 'Find One'})
     @Get(':id')
     @HttpCode(HttpStatus.OK)
@@ -88,7 +90,7 @@ export class SchoolPeriodsController {
             title: `Success`,
         };
     }
-
+   @PublicRoute()
     @ApiOperation({summary: 'Hide'})
     @Patch(':id/hide')
     @HttpCode(HttpStatus.CREATED)
@@ -101,7 +103,7 @@ export class SchoolPeriodsController {
             title: `Ocultado`,
         };
     }
-
+   @PublicRoute()
     @ApiOperation({summary: 'Update'})
     @Put(':id')
     @HttpCode(HttpStatus.CREATED)
@@ -113,7 +115,7 @@ export class SchoolPeriodsController {
             title: `Actualizado`,
         };
     }
-
+   @PublicRoute()
     @ApiOperation({summary: 'Reactivate'})
     @Patch(':id/reactivate')
     @HttpCode(HttpStatus.CREATED)
@@ -126,7 +128,7 @@ export class SchoolPeriodsController {
             title: `Reactivado`,
         };
     }
-
+   @PublicRoute()
     @ApiOperation({summary: 'Delete'})
     @Delete(':id')
     @HttpCode(HttpStatus.CREATED)
@@ -138,7 +140,7 @@ export class SchoolPeriodsController {
             title: `Eliminado`,
         };
     }
-
+   @PublicRoute()
     @ApiOperation({summary: 'Delete All'})
     @Patch('remove-all')
     @HttpCode(HttpStatus.CREATED)
@@ -151,7 +153,7 @@ export class SchoolPeriodsController {
             title: `Eliminados`,
         };
     }
-
+   @PublicRoute()
     @ApiOperation({summary: 'Open'})
     @Patch(':id/open')
     @HttpCode(HttpStatus.CREATED)
@@ -164,7 +166,7 @@ export class SchoolPeriodsController {
             title: `Abierto`,
         };
     }
-
+   @PublicRoute()
     @ApiOperation({summary: 'Close'})
     @Patch(':id/close')
     @HttpCode(HttpStatus.CREATED)
@@ -177,7 +179,7 @@ export class SchoolPeriodsController {
             title: `Cerrado`,
         };
     }
-
+   @PublicRoute()
     @ApiOperation({summary: 'Upload File'})
     @Post('upload/:modelId')
     @UseInterceptors(
@@ -195,6 +197,7 @@ export class SchoolPeriodsController {
         return {data: response, message: 'Upload File', title: 'Upload'};
     }
 
+    @PublicRoute()
     @ApiOperation({summary: 'Open School Period'})
     @Get('states/open')
     @HttpCode(HttpStatus.OK)

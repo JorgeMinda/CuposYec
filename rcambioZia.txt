@@ -1,0 +1,803 @@
+// src/app/pages/admin/work-flows/enrollment-capacity/enrollment-capacity.state.ts
+
+export interface EnrollmentCapacityState {
+  // Catálogos
+  careers: TeacherDistributionCatalogue[];
+  teacherDistributions: TeacherDistributionCatalogue[];
+  levels: TeacherDistributionCatalogue[];
+
+  // Datos crudos de la DB
+  capacitiesRaw: CapacityRawInterface[];
+
+  // Selecciones de la UI
+  selectedCareerId: string | null;
+  selectedTeacherDistributionId: string | null;
+  selectedLevelId: string | null;
+
+  // Estado del Modal
+  showModal: boolean;
+  modalCell: CellInterface | null;
+  modalCapacityInput: number;
+}
+
+export interface TeacherDistributionCatalogue {
+  id: string;
+  name: string;
+}
+
+export interface CapacityRawInterface {
+  id: string;
+  teacherDistribution?: { id: string; name: string };
+  career?: { id: string; name: string };
+  academicPeriod?: { id: string; name: string };
+  parallel?: { id: string; name: string };
+  workday?: { id: string; name: string };
+  capacity: number;
+  studentsCount?: number;
+}
+
+// Interfaces para la matriz visual (antes en el componente)
+export interface CellInterface {
+  id: string;
+  horario: string;
+  paralelo: string;
+  cupoMaximo: number;
+  estudiantesContados: number;
+  colorSemaforo: 'verde' | 'naranja' | 'rojo';
+}
+
+export interface BlockInterface {
+  horarioNombre: string;
+  celdas: CellInterface[];
+}
+
+export interface RowInterface {
+  jornadaId: string;
+  jornadaNombre: string;
+  bloquesHorarios: BlockInterface[];
+}
+
+export const INITIAL_ENROLLMENT_CAPACITY_STATE: EnrollmentCapacityState = {
+  careers: [],
+  teacherDistributions: [],
+  levels: [],
+  capacitiesRaw: [],
+  selectedCareerId: null,
+  selectedTeacherDistributionId: null,
+  selectedLevelId: null,
+  showModal: false,
+  modalCell: null,
+  modalCapacityInput: 0,
+};
+
+
+// src/app/pages/admin/work-flows/enrollment-capacity/enrollment-capacity.store.ts
+import { computed, inject, Injectable, signal } from '@angular/core';
+import {
+  EnrollmentCapacityState,
+  INITIAL_ENROLLMENT_CAPACITY_STATE,
+  RowInterface,
+  CapacityRawInterface,
+  CellInterface
+} from './enrollment-capacity.state';
+import { EnrollmentCapacityService } from './enrollment-capacity.service';
+
+const FORM_STATE_KEY = 'enrollment-capacity-v2';
+
+@Injectable({ providedIn: 'root' })
+export class EnrollmentCapacityStore {
+  private readonly service = inject(EnrollmentCapacityService);
+
+  readonly state = signal<EnrollmentCapacityState>(this.loadFromStorage());
+
+  // --- DICCIONARIOS DE ORDENAMIENTO ESTÁTICO ---
+  private readonly PRIORIDAD_NIVELES: Record<string, number> = {
+    'Nivel A1.2': 1, 'Nivel A2.2': 2, 'Nivel B1.2': 3, 'Nivel B2.2': 4
+  };
+  private readonly PRIORIDAD_JORNADAS: Record<string, number> = {
+    'Matutina': 1, 'Vespertina': 2, 'Nocturna': 3
+  };
+
+  // --- COMPUTEDS DE CATÁLOGOS ---
+  readonly careers = computed(() => this.state().careers);
+  readonly teacherDistributions = computed(() => this.state().teacherDistributions);
+  
+  readonly sortedLevels = computed(() => {
+    const lista = this.state().levels;
+    return [...lista].sort((a, b) => (this.PRIORIDAD_NIVELES[a.name] || 99) - (this.PRIORIDAD_NIVELES[b.name] || 99));
+  });
+
+  readonly activeLevelName = computed(() => {
+    const activo = this.sortedLevels().find(n => n.id === this.state().selectedLevelId);
+    return activo ? activo.name : 'Seleccione un Nivel';
+  });
+
+  // --- COMPUTED DE MATRIZ (Lógica pura extraída del componente antiguo) ---
+  readonly matrixRows = computed<RowInterface[]>(() => {
+    const { capacitiesRaw, selectedCareerId, selectedTeacherDistributionId, selectedLevelId } = this.state();
+    
+    // 1. Filtrar datos crudos
+    const filtrados = capacitiesRaw.filter(item =>
+      item.career?.id === selectedCareerId &&
+      item.teacherDistribution?.id === selectedTeacherDistributionId &&
+      item.academicPeriod?.id === selectedLevelId
+    );
+
+    // 2. Agrupar por Jornadas (Ordenadas)
+    const jornadasMap = new Map<string, { id: string; name: string }>();
+    filtrados.forEach(item => {
+      if (item.workday) jornadasMap.set(item.workday.id, item.workday);
+    });
+
+    const jornadasOrdenadas = Array.from(jornadasMap.values()).sort((a, b) => {
+      const pA = this.PRIORIDAD_JORNADAS[a.name.split(' ')[0]] || 99;
+      const pB = this.PRIORIDAD_JORNADAS[b.name.split(' ')[0]] || 99;
+      return pA === pB ? a.name.localeCompare(b.name) : pA - pB;
+    });
+
+    // 3. Construir filas y celdas
+    return jornadasOrdenadas.map(jornada => {
+      const registrosDeJornada = filtrados.filter(f => f.workday?.id === jornada.id);
+      
+      const celdas: CellInterface[] = registrosDeJornada.map(reg => {
+        const max = reg.capacity || 0;
+        const ocupados = reg.studentsCount || 0;
+        const porcentaje = max > 0 ? (ocupados / max) * 100 : 0;
+        
+        let semaforo: 'verde' | 'naranja' | 'rojo' = 'verde';
+        if (porcentaje >= 100) semaforo = 'rojo';
+        else if (porcentaje >= 80) semaforo = 'naranja';
+
+        return {
+          id: reg.id,
+          horario: reg.workday?.name || jornada.name,
+          paralelo: reg.parallel?.name || 'Sin Nombre',
+          cupoMaximo: max,
+          estudiantesContados: ocupados,
+          colorSemaforo: semaforo
+        };
+      }).sort((a, b) => a.paralelo.localeCompare(b.paralelo)); // Orden A, B, C...
+
+      return {
+        jornadaId: jornada.id,
+        jornadaNombre: jornada.name,
+        bloquesHorarios: [{ horarioNombre: jornada.name, celdas }]
+      };
+    });
+  });
+
+  // --- COMPUTEDS DE MÉTRICAS Y GRÁFICOS ---
+  readonly totalCupos = computed(() => this.matrixRows().reduce((sum, f) => sum + f.bloquesHorarios[0].celdas.reduce((s, c) => s + c.cupoMaximo, 0), 0));
+  readonly totalOcupados = computed(() => this.matrixRows().reduce((sum, f) => sum + f.bloquesHorarios[0].celdas.reduce((s, c) => s + c.estudiantesContados, 0), 0));
+  readonly totalDisponibles = computed(() => Math.max(0, this.totalCupos() - this.totalOcupados()));
+  readonly porcentajeOcupacion = computed(() => this.totalCupos() === 0 ? 0 : Math.round((this.totalOcupados() / this.totalCupos()) * 100));
+
+  readonly chartData = computed(() => ({
+    labels: ['Ocupado', 'Disponible'],
+    datasets: [{ data: [this.totalOcupados(), this.totalDisponibles()], backgroundColor: ['#f97316', '#22c55e'], hoverBackgroundColor: ['#ea580c', '#16a34a'], borderWidth: 0 }]
+  }));
+
+  // --- ACCIONES (SETTERS) ---
+  selectCareer(id: string | null) { this.state.update(s => ({ ...s, selectedCareerId: id, selectedLevelId: null })); }
+  selectDistribution(id: string | null) { this.state.update(s => ({ ...s, selectedTeacherDistributionId: id, selectedLevelId: null })); }
+  selectLevel(id: string) { this.state.update(s => ({ ...s, selectedLevelId: id })); }
+
+  openModal(cell: CellInterface) {
+    this.state.update(s => ({ ...s, showModal: true, modalCell: cell, modalCapacityInput: cell.cupoMaximo }));
+  }
+  closeModal() { this.state.update(s => ({ ...s, showModal: false, modalCell: null })); }
+  setModalInput(val: number) { this.state.update(s => ({ ...s, modalCapacityInput: val })); }
+
+  // --- ACCIONES HTTP (CRUD INMUTABLE) ---
+  loadInitialData() {
+    this.service.getCatalogues().subscribe({
+      next: (data: any) => {
+        this.state.update(s => ({
+          ...s,
+          careers: data.careers || [],
+          teacherDistributions: data.teacherDistributions || [],
+          levels: data.levels || [],
+          selectedCareerId: data.careers?.[0]?.id || null,
+          selectedTeacherDistributionId: data.teacherDistributions?.[0]?.id || null
+        }));
+        // Auto-seleccionar primer nivel
+        const firstLevel = this.sortedLevels()[0]?.id;
+        if (firstLevel) this.selectLevel(firstLevel);
+      }
+    });
+
+    this.service.findAll().subscribe({
+      next: (data: any) => this.state.update(s => ({ ...s, capacitiesRaw: data.data || data }))
+    });
+  }
+
+  saveCapacity() {
+    const { modalCell, modalCapacityInput } = this.state();
+    if (!modalCell) return;
+
+    // Optimistic UI Update
+    const newRaw = this.state().capacitiesRaw.map(r => r.id === modalCell.id ? { ...r, capacity: modalCapacityInput } : r);
+    this.state.update(s => ({ ...s, capacitiesRaw: newRaw, showModal: false }));
+
+    this.service.update(modalCell.id, { capacity: modalCapacityInput }).subscribe();
+  }
+
+  deleteCapacity() {
+    const { modalCell } = this.state();
+    if (!modalCell || modalCell.estudiantesContados > 0) return;
+
+    const newRaw = this.state().capacitiesRaw.filter(r => r.id !== modalCell.id);
+    this.state.update(s => ({ ...s, capacitiesRaw: newRaw, showModal: false }));
+
+    this.service.remove(modalCell.id).subscribe();
+  }
+
+  private loadFromStorage(): EnrollmentCapacityState {
+    const stored = sessionStorage.getItem(FORM_STATE_KEY);
+    return stored ? JSON.parse(stored) : INITIAL_ENROLLMENT_CAPACITY_STATE;
+  }
+}
+
+
+<!-- src/app/pages/admin/work-flows/enrollment-capacity/components/selectors-data/selectors-data.component.html -->
+<div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 mb-6 flex flex-wrap gap-6 items-center">
+    
+    <div class="flex-1 min-w-[240px] flex flex-col gap-1.5">
+        <label class="font-bold text-xs text-slate-500 uppercase tracking-wider">Carrera / Programa</label>
+        <p-select 
+            [options]="store.careers()" 
+            optionLabel="name" 
+            optionValue="id" 
+            [ngModel]="store.state().selectedCareerId"
+            (onChange)="store.selectCareer($event.value)"
+            placeholder="Seleccione..."
+            styleClass="w-full">
+        </p-select>
+    </div>
+
+    <div class="flex-1 min-w-[240px] flex flex-col gap-1.5">
+        <label class="font-bold text-xs text-slate-500 uppercase tracking-wider">Distribución de Docentes</label>
+        <p-select 
+            [options]="store.teacherDistributions()" 
+            optionLabel="name" 
+            optionValue="id" 
+            [ngModel]="store.state().selectedTeacherDistributionId"
+            (onChange)="store.selectDistribution($event.value)"
+            placeholder="Seleccione..."
+            styleClass="w-full">
+        </p-select>
+    </div>
+</div>
+
+<!-- src/app/pages/admin/work-flows/enrollment-capacity/components/capacity-matrix/capacity-matrix.component.html -->
+<div class="flex gap-6 flex-wrap w-full mb-6">
+    @for (nivel of store.sortedLevels(); track nivel.id) {
+        <div 
+            (click)="store.selectLevel(nivel.id)"
+            [class]="store.state().selectedLevelId === nivel.id ? 'bg-blue-50 border-blue-500' : 'bg-white border-slate-300'"
+            class="flex-1 min-w-[180px] max-w-[260px] p-4 rounded-xl border-2 border-solid cursor-pointer flex items-center justify-between transition-all user-select-none hover:shadow-md">
+            
+            <div class="flex flex-col gap-0.5">
+                <span class="text-xs font-semibold text-slate-500 uppercase">Nivel</span>
+                <span class="text-lg font-bold text-slate-900">{{ nivel.name }}</span>
+            </div>
+            <div [class]="store.state().selectedLevelId === nivel.id ? 'text-blue-500' : 'text-slate-400'">
+                <i class="pi pi-clone text-base"></i>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="flex gap-6 flex-wrap w-full">
+    <!-- Matriz Principal -->
+    <div class="flex-[2] min-w-[450px] bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <h3 class="text-slate-900 mb-6 text-lg font-bold">
+            Distribución y Disponibilidad - <span class="text-blue-600">{{ store.activeLevelName() }}</span>
+        </h3>
+
+        <div class="flex flex-col gap-7">
+            @for (fila of store.matrixRows(); track fila.jornadaId) {
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <span class="font-extrabold text-sm text-slate-800 block mb-4 uppercase tracking-wide border-l-4 border-blue-500 pl-2">
+                        Jornada {{ fila.jornadaNombre }}
+                    </span>
+                    
+                    @if (fila.bloquesHorarios[0].celdas.length === 0) {
+                        <span class="text-sm text-slate-400 italic block p-1">Sin paralelos en esta jornada.</span>
+                    }
+
+                    <div class="flex flex-wrap gap-3">
+                        @for (celda of fila.bloquesHorarios[0].celdas; track celda.id) {
+                            <div 
+                                (click)="store.openModal(celda)"
+                                [class]="celda.colorSemaforo === 'verde' ? 'bg-green-50 border-green-500' : celda.colorSemaforo === 'naranja' ? 'bg-orange-50 border-orange-500' : 'bg-red-50 border-red-500'"
+                                class="border border-solid rounded-lg p-3 min-w-[135px] flex-1 max-w-[180px] cursor-pointer flex flex-col gap-1 transition-transform hover:scale-105">
+                                
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-slate-900 text-sm">{{ celda.paralelo }}</span>
+                                    <span [class]="celda.colorSemaforo === 'verde' ? 'bg-green-500' : celda.colorSemaforo === 'naranja' ? 'bg-orange-500' : 'bg-red-500'" class="w-2 h-2 rounded-full inline-block"></span>
+                                </div>
+                                <div class="mt-1 text-xs text-slate-600 font-medium">
+                                    Inscritos: <strong class="text-slate-900">{{ celda.estudiantesContados }}</strong> / {{ celda.cupoMaximo }}
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Panel Lateral Métricas -->
+    <div class="flex-1 min-w-[280px] flex flex-col gap-6">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <h3 class="text-slate-500 mb-4 text-sm font-bold uppercase tracking-wider">Métricas del Nivel</h3>
+            <div class="flex flex-col gap-3">
+                <div class="flex justify-between border-b border-dashed border-slate-200 pb-2">
+                    <span class="text-slate-600 font-medium">Cupos Asignados:</span>
+                    <span class="font-bold text-blue-600">{{ store.totalCupos() }}</span>
+                </div>
+                <div class="flex justify-between border-b border-dashed border-slate-200 pb-2">
+                    <span class="text-slate-600 font-medium">Estudiantes Ocupando:</span>
+                    <span class="font-bold text-orange-500">{{ store.totalOcupados() }}</span>
+                </div>
+                <div class="flex justify-between pb-1">
+                    <span class="text-slate-600 font-medium">Disponibilidad:</span>
+                    <span class="font-bold text-green-500">{{ store.totalDisponibles() }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex justify-center items-center relative h-60">
+            <p-chart type="doughnut" [data]="store.chartData()" [options]="chartOptions" styleClass="w-full h-full"></p-chart>
+            <div class="absolute flex flex-col items-center text-center pointer-events-none">
+                <span class="text-3xl font-black text-slate-900">{{ store.porcentajeOcupacion() }}%</span>
+                <span class="text-xs text-slate-500 font-bold uppercase">Ocupado</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal CRUD -->
+<p-dialog 
+    header="Gestión de Cupos del Paralelo" 
+    [(visible)]="store.state().showModal" 
+    [modal]="true" 
+    [style]="{ width: '420px' }" 
+    [resizable]="false"
+    [draggable]="false">
+    
+    @if (store.state().modalCell) {
+        <div class="flex flex-col gap-4 pt-2">
+            <div class="bg-slate-100 p-3 rounded-lg">
+                <span class="block text-xs text-slate-600 font-semibold">CONFIGURACIÓN DEL CURSO:</span>
+                <strong class="text-base text-slate-900">{{ store.state().modalCell?.paralelo }} - {{ store.state().modalCell?.horario }}</strong>
+                <span class="block text-sm text-slate-500 mt-1">Alumnos Inscritos actualmente: {{ store.state().modalCell?.estudiantesContados }}</span>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+                <label class="font-bold text-sm text-slate-700">Capacidad Máxima (Cupos)</label>
+                <input 
+                    pInputText 
+                    type="number" 
+                    [ngModel]="store.state().modalCapacityInput"
+                    (ngModelChange)="store.setModalInput($event)"
+                    class="w-full text-base font-semibold p-2 border border-slate-300 rounded-md" />
+            </div>
+
+            <div class="flex justify-between gap-3 mt-3">
+                <p-button 
+                    label="Borrar Cupo" 
+                    icon="pi pi-trash" 
+                    severity="danger" 
+                    [disabled]="store.state().modalCell!.estudiantesContados > 0"
+                    (onClick)="store.deleteCapacity()">
+                </p-button>
+
+                <div class="flex gap-2">
+                    <p-button label="Cancelar" severity="secondary" (onClick)="store.closeModal()"></p-button>
+                    <p-button label="Guardar" icon="pi pi-check" severity="success" (onClick)="store.saveCapacity()"></p-button>
+                </div>
+            </div>
+        </div>
+    }
+</p-dialog>
+
+
+// src/app/pages/admin/work-flows/enrollment-capacity/components/capacity-matrix/capacity-matrix.component.ts
+import { Component, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { ChartModule } from 'primeng/chart';
+import { EnrollmentCapacityStore } from '../../enrollment-capacity.store';
+
+@Component({
+  selector: 'app-capacity-matrix',
+  standalone: true,
+  imports: [FormsModule, DialogModule, InputTextModule, ButtonModule, ChartModule],
+  templateUrl: './capacity-matrix.component.html'
+})
+export class CapacityMatrixComponent {
+  protected readonly store = inject(EnrollmentCapacityStore);
+  
+  readonly chartOptions = signal({
+    cutout: '78%',
+    plugins: {
+      legend: { display: false },
+      tooltip: { enabled: true }
+    }
+  });
+}
+
+
+<!-- src/app/pages/admin/work-flows/enrollment-capacity/components/enrollment-capacity/enrollment-capacity.component.html -->
+<div style="padding: 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-height: 100vh; background-color: #f8fafc;">
+    
+    <app-selectors-data />
+    <app-capacity-matrix />
+
+</div>
+
+// src/app/pages/admin/work-flows/enrollment-capacity/components/enrollment-capacity/enrollment-capacity.component.ts
+import { Component, inject, OnInit } from '@angular/core';
+import { SelectorsDataComponent } from '../selectors-data/selectors-data.component';
+import { CapacityMatrixComponent } from '../capacity-matrix/capacity-matrix.component';
+import { EnrollmentCapacityStore } from '../../enrollment-capacity.store';
+
+@Component({
+  selector: 'app-enrollment-capacity',
+  standalone: true,
+  imports: [SelectorsDataComponent, CapacityMatrixComponent],
+  templateUrl: './enrollment-capacity.component.html'
+})
+export class EnrollmentCapacityComponent implements OnInit {
+  private readonly store = inject(EnrollmentCapacityStore);
+
+  ngOnInit(): void {
+    this.store.loadInitialData();
+  }
+}
+
+// src/app/pages/admin/services/enrollment-capacity-http.service.ts
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { HttpResponseInterface } from '../../../auth/interfaces/http-response.interface';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class EnrollmentCapacityHttpService {
+    private readonly _httpClient = inject(HttpClient);
+    private readonly _apiUrl = `${environment.API_URL}/admin/enrollment-capacity`;
+
+    /**
+     * Recupera los catálogos de carreras, distribuciones docentes y niveles académicos
+     */
+    findCatalogues(): Observable<any> {
+        return this._httpClient.get<HttpResponseInterface>(`${this._apiUrl}/catalogues`).pipe(
+            map((response) => response.data)
+        );
+    }
+
+    /**
+     * Envía la configuración final calculada de cupos de matrícula al servidor
+     */
+    register(payload: any): Observable<any> {
+        return this._httpClient.post<HttpResponseInterface>(this._apiUrl, payload).pipe(
+            map((response) => response.data)
+        );
+    }
+
+    // --- NUEVOS MÉTODOS AÑADIDOS PARA QUE EL STORE PUEDA HACER CRUD EN EL MODAL ---
+    
+    /**
+     * Obtiene todos los cupos existentes para pintar la matriz
+     */
+    findAll(): Observable<any> {
+        return this._httpClient.get<HttpResponseInterface>(this._apiUrl).pipe(
+            map((response) => response.data)
+        );
+    }
+
+    /**
+     * Actualiza el cupo máximo de un paralelo específico (Lo usa el modal al guardar)
+     */
+    update(id: string, payload: { capacity: number }): Observable<any> {
+        return this._httpClient.patch<HttpResponseInterface>(`${this._apiUrl}/${id}`, payload).pipe(
+            map((response) => response.data)
+        );
+    }
+
+    /**
+     * Elimina un cupo/paralelo (Lo usa el modal al borrar)
+     */
+    remove(id: string): Observable<any> {
+        return this._httpClient.delete<HttpResponseInterface>(`${this._apiUrl}/${id}`).pipe(
+            map((response) => response.data)
+        );
+    }
+}
+
+
+// src/app/pages/admin/work-flows/enrollment-capacity/enrollment-capacity.store.ts
+import { computed, inject, Injectable, signal } from '@angular/core';
+import {
+  EnrollmentCapacityState,
+  INITIAL_ENROLLMENT_CAPACITY_STATE,
+  RowInterface,
+  CellInterface
+} from './enrollment-capacity.state';
+
+// --- CORRECCIÓN AQUÍ: Importamos tu servicio HTTP real ---
+import { EnrollmentCapacityHttpService } from '../../../services/enrollment-capacity-http.service';
+// ---------------------------------------------------------
+
+const FORM_STATE_KEY = 'enrollment-capacity-v2';
+
+@Injectable({ providedIn: 'root' })
+export class EnrollmentCapacityStore {
+  
+  // --- CORRECCIÓN AQUÍ: Inyectamos tu servicio HTTP real ---
+  private readonly httpService = inject(EnrollmentCapacityHttpService);
+  // --------------------------------------------------------
+
+  readonly state = signal<EnrollmentCapacityState>(this.loadFromStorage());
+
+  // ... (El resto de los computed de ordenamiento, matriz, gráficos, etc. se quedan tal cual te los pasé) ...
+
+  // --- ACCIONES HTTP (CRUD INMUTABLE) ---
+  // Aquí es donde el Store le pide los datos a tu servicio HTTP
+  loadInitialData() {
+    this.httpService.findCatalogues().subscribe({ // <--- Usa tu servicio
+      next: (data: any) => {
+        this.state.update(s => ({
+          ...s,
+          careers: data.careers || [],
+          teacherDistributions: data.teacherDistributions || [],
+          levels: data.levels || [],
+          selectedCareerId: data.careers?.[0]?.id || null,
+          selectedTeacherDistributionId: data.teacherDistributions?.[0]?.id || null
+        }));
+        const firstLevel = this.sortedLevels()[0]?.id;
+        if (firstLevel) this.selectLevel(firstLevel);
+      }
+    });
+
+    this.httpService.findAll().subscribe({ // <--- Usa tu servicio
+      next: (data: any) => this.state.update(s => ({ ...s, capacitiesRaw: data || [] }))
+    });
+  }
+
+  saveCapacity() {
+    const { modalCell, modalCapacityInput } = this.state();
+    if (!modalCell) return;
+
+    // Optimistic UI Update
+    const newRaw = this.state().capacitiesRaw.map(r => r.id === modalCell.id ? { ...r, capacity: modalCapacityInput } : r);
+    this.state.update(s => ({ ...s, capacitiesRaw: newRaw, showModal: false }));
+
+    this.httpService.update(modalCell.id, { capacity: modalCapacityInput }).subscribe(); // <--- Usa tu servicio
+  }
+
+  deleteCapacity() {
+    const { modalCell } = this.state();
+    if (!modalCell || modalCell.estudiantesContados > 0) return;
+
+    const newRaw = this.state().capacitiesRaw.filter(r => r.id !== modalCell.id);
+    this.state.update(s => ({ ...s, capacitiesRaw: newRaw, showModal: false }));
+
+    this.httpService.remove(modalCell.id).subscribe(); // <--- Usa tu servicio
+  }
+
+  private loadFromStorage(): EnrollmentCapacityState {
+    const stored = sessionStorage.getItem(FORM_STATE_KEY);
+    return stored ? JSON.parse(stored) : INITIAL_ENROLLMENT_CAPACITY_STATE;
+  }
+} 
+
+export const MY_ROUTES = {
+  // Base
+  main: 'main',
+  home: '',
+
+  // Layout
+  layout: {
+    base: 'layout',
+  },
+
+  // Error pages
+  errorPages: {
+    base: 'errors',
+
+    unauthorized: {
+      base: '401',
+      absolute: '/errors/401',
+    },
+
+    forbidden: {
+      base: '403',
+      absolute: '/errors/403',
+    },
+
+    notFound: {
+      base: '404',
+      absolute: '/errors/404',
+    },
+
+    unavailable: {
+      base: '503',
+      absolute: '/errors/503',
+    },
+  },
+
+  // Admin
+  adminPages: {
+    base: 'admin',
+
+    careerRegistration: {
+      base: 'career-registration',
+      absolute: '/main/admin/career-registration',
+    },
+
+    enrollmentCapacity: {
+      base: 'enrollment-capacity',
+      absolute: '/main/admin/enrollment-capacity',
+
+      // Mantener estas rutas únicamente si existen en app.routes.ts.
+      // Si actualmente son componentes internos, simplemente no las utilices.
+      matrix: {
+        base: 'matrix',
+        absolute: '/main/admin/enrollment-capacity/matrix',
+      },
+
+      selectors: {
+        base: 'selectors',
+        absolute: '/main/admin/enrollment-capacity/selectors',
+      },
+    },
+  },
+
+  // Dashboards
+  dashboards: {
+    base: 'dashboards',
+    absolute: '/main/dashboards',
+  },
+} as const; 
+
+
+import {Routes} from '@angular/router';
+import {AppLayout} from '@layout/component/app.layout';
+import {MY_ROUTES} from "@routes";
+
+export const appRoutes: Routes = [
+    {
+        path: MY_ROUTES.main,
+        component: AppLayout,
+        children: [
+            {
+                path: MY_ROUTES.adminPages.base,
+                loadChildren: () => import('./app/pages/admin/admin.routes')
+            }
+        ]
+    },
+    {path: '**', redirectTo: '/404'}
+];
+
+
+// src/app/pages/admin/admin.routes.ts
+import { Routes } from '@angular/router';
+import { MY_ROUTES } from "@routes";
+
+export default [
+    // ==========================================
+    // WORK-FLOW: CAREER REGISTRATION
+    // ==========================================
+    {
+        path: MY_ROUTES.adminPages.careerRegistration.base,
+        title: 'Registro de Carreras',
+        loadComponent: () => import('./work-flows/career-registration/components/career/career.component')
+            .then(m => m.CareerComponent)
+    },
+
+    // ==========================================
+    // WORK-FLOW: ENROLLMENT CAPACITY
+    // ==========================================
+    {
+        path: MY_ROUTES.adminPages.enrollmentCapacity.base,
+        title: 'Capacidad de Matrícula',
+        // Este componente es el orquestador que pinta Selectors y Matrix en la misma pantalla
+        loadComponent: () => import('./work-flows/enrollment-capacity/components/enrollment-capacity/enrollment-capacity.component')
+            .then(m => m.EnrollmentCapacityComponent)
+    }
+] as Routes;
+
+// src/app/pages/admin/admin.routes.ts
+
+import { Routes } from '@angular/router';
+import { MY_ROUTES } from '@routes';
+
+export default [
+  {
+    path: MY_ROUTES.adminPages.careerRegistration.base,
+    title: 'Registro de Carreras',
+    loadComponent: () =>
+      import(
+        './work-flows/career-registration/components/career/career.component'
+      ).then((m) => m.CareerComponent),
+  },
+
+  {
+    path: MY_ROUTES.adminPages.enrollmentCapacity.base,
+    title: 'Capacidad de Matrícula',
+    loadComponent: () =>
+      import(
+        './work-flows/enrollment-capacity/components/enrollment-capacity/enrollment-capacity.component'
+      ).then((m) => m.EnrollmentCapacityComponent),
+  },
+] as Routes;
+
+
+import { Routes } from '@angular/router';
+import { MY_ROUTES } from '@routes';
+
+export default [
+  {
+    path: MY_ROUTES.adminPages.careerRegistration.base,
+    title: 'Registro de Carreras',
+    loadComponent: () =>
+      import(
+        './work-flows/career-registration/components/career/career.component'
+      ).then((m) => m.CareerComponent),
+  },
+
+  {
+    path: MY_ROUTES.adminPages.enrollmentCapacity.base,
+    children: [
+      {
+        path: '',
+        title: 'Capacidad de Matrícula',
+        loadComponent: () =>
+          import(
+            './work-flows/enrollment-capacity/components/enrollment-capacity/enrollment-capacity.component'
+          ).then((m) => m.EnrollmentCapacityComponent),
+      },
+      {
+        path: MY_ROUTES.adminPages.enrollmentCapacity.selectors.base,
+        title: 'Selectores',
+        loadComponent: () =>
+          import(
+            './work-flows/enrollment-capacity/components/selectors-data/selectors-data.component'
+          ).then((m) => m.SelectorsDataComponent),
+      },
+      {
+        path: MY_ROUTES.adminPages.enrollmentCapacity.matrix.base,
+        title: 'Matriz de Capacidad',
+        loadComponent: () =>
+          import(
+            './work-flows/enrollment-capacity/components/capacity-matrix/capacity-matrix.component'
+          ).then((m) => m.CapacityMatrixComponent),
+      },
+    ],
+  },
+] as Routes;
+
+
+enrollmentCapacity: {
+  base: 'enrollment-capacity',
+  absolute: '/main/admin/enrollment-capacity',
+
+  selectors: {
+    base: 'selectors',
+    absolute: '/main/admin/enrollment-capacity/selectors',
+  },
+
+  matrix: {
+    base: 'matrix',
+    absolute: '/main/admin/enrollment-capacity/matrix',
+  },
+},

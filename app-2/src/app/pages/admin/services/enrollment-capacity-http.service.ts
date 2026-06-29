@@ -1,4 +1,3 @@
-// src/app/pages/admin/services/enrollment-capacity-http.service.ts
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
@@ -13,13 +12,15 @@ export class EnrollmentCapacityHttpService {
     private readonly _apiUrl = `${environment.API_URL}`;
 
     /**
-     * Obtiene los catálogos pegando a los endpoints reales que existen en tu NestJS
+     * Obtiene los catálogos unificados incluyendo la consulta real a school-periods
      */
     findCatalogues(): Observable<any> {
         return forkJoin({
             careers: this._httpClient.get<HttpResponseInterface>(`${this._apiUrl}/careers`),
             teacherDistributions: this._httpClient.get<HttpResponseInterface>(`${this._apiUrl}/teacher-distributions/catalogue`),
             academicPeriods: this._httpClient.get<HttpResponseInterface>(`${this._apiUrl}/catalogues/catalogue?type=ACADEMIC_PERIOD`),
+            // CORRECCIÓN DE LA RUTA REAL SEGÚN SUPABASE:
+          schoolPeriods: this._httpClient.get<HttpResponseInterface>(`${this._apiUrl}/school-periods`),
             parallels: this._httpClient.get<HttpResponseInterface>(`${this._apiUrl}/catalogues/catalogue?type=PARALLEL`),
             workdays: this._httpClient.get<HttpResponseInterface>(`${this._apiUrl}/catalogues/catalogue?type=ENROLLMENTS_WORKDAY`)
         }).pipe(
@@ -27,6 +28,7 @@ export class EnrollmentCapacityHttpService {
                 careers: responses.careers?.data || [],
                 teacherDistributions: responses.teacherDistributions?.data || [],
                 academicPeriods: responses.academicPeriods?.data || [],
+                schoolPeriods: responses.schoolPeriods?.data || [], // Extrae el arreglo de la base
                 parallels: responses.parallels?.data || [],
                 workdays: responses.workdays?.data || []
             }))
@@ -52,7 +54,7 @@ export class EnrollmentCapacityHttpService {
     }
 
     /**
-     * Consulta la capacidad puntual de una celda (carrera + paralelo + jornada + nivel)
+     * Consulta la capacidad puntual de una celda
      */
     findCapacityByCareer(careerId: string, parallelId: string, workdayId: string, academicPeriodId: string): Observable<number> {
         return this._httpClient.get<HttpResponseInterface>(

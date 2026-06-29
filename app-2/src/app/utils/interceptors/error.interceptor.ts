@@ -11,18 +11,21 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
     return next(req).pipe(
         catchError((error: HttpErrorResponse) => {
-            // 🛡️ SI ES UN ERROR 409 (Duplicado): Ocultamos los spinners y dejamos 
-            // pasar el error limpio para que se dispare tu alerta <p-toast> personalizada
-            if (error.status === 409) {
-                coreService.hideLoading();
-                coreService.hideProcessing();
+            // 🛡️ Ocultamos siempre los loaders globales del sistema
+            coreService.hideLoading();
+            coreService.hideProcessing();
+
+            // 🚫 SI ES UN ERROR DE CAPACIDADES O UN MÉTODO DE ESCRITURA CONTROLADO (POST/PUT/PATCH/DELETE)
+            // No llamamos a customMessageService para evitar alertas duplicadas en los formularios.
+            const isCapacityUrl = req.url.includes('/enrollment-capacities') || req.url.includes('/capacities');
+            const isWriteMethod = ['POST', 'PUT', 'PATCH', 'DELETE'].includes(req.method);
+
+            if (error.status === 409 || isWriteMethod || isCapacityUrl) { 
                 return throwError(() => error);
             }
 
-            // Para cualquier otro error genérico de la app, mantiene tu lógica original
+            // Alertas genéricas automáticas solo para el resto de errores inesperados de lectura (GET)
             if (error.error?.error !== 'EXPIRED_TOKEN') {
-                coreService.hideLoading();
-                coreService.hideProcessing();
                 customMessageService.showHttpError(error.error);
             }
 

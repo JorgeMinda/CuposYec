@@ -1,0 +1,1896 @@
+PS C:\Users\minda\Desktop\NuevoE> tree /f
+Listado de rutas de carpetas
+El número de serie del volumen es B68E-6541
+C:.
+└───app-frontend
+    │   .editorconfig
+    │   .gitignore
+    │   .postcssrc.json
+    │   .prettierignore
+    │   .prettierrc.json
+    │   angular.json
+    │   eslint.config.js
+    │   LICENSE.md
+    │   package-lock.json
+    │   package.json
+    │   README.md
+    │   tsconfig.app.json
+    │   tsconfig.json
+    │   tsconfig.spec.json
+    │   vercel.json
+    │   
+    ├───public
+    │   └───demo
+    │       └───images
+    │           ├───flag
+    │           │       flag_placeholder.png
+    │           │       
+    │           ├───galleria
+    │           │       galleria1.jpg
+    │           │       galleria10.jpg
+    │           │       galleria10s.jpg
+    │           │       galleria11.jpg
+    │           │       galleria11s.jpg
+    │           │       galleria12.jpg
+    │           │       galleria12s.jpg
+    │           │       galleria13.jpg
+    │           │       galleria13s.jpg
+    │           │       galleria14.jpg
+    │           │       galleria14s.jpg
+    │           │       galleria15.jpg
+    │           │       galleria15s.jpg
+    │           │       galleria1s.jpg
+    │           │       galleria2.jpg
+    │           │       galleria2s.jpg
+    │           │       galleria3.jpg
+    │           │       galleria3s.jpg
+    │           │       galleria4.jpg
+    │           │       galleria4s.jpg
+    │           │       galleria5.jpg
+    │           │       galleria5s.jpg
+    │           │       galleria6.jpg
+    │           │       galleria6s.jpg
+    │           │       galleria7.jpg
+    │           │       galleria7s.jpg
+    │           │       galleria8.jpg
+    │           │       galleria8s.jpg
+    │           │       galleria9.jpg
+    │           │       galleria9s.jpg
+    │           │       
+    │           └───product
+    │                   bamboo-watch.jpg
+    │                   black-watch.jpg
+    │                   blue-band.jpg
+    │                   blue-t-shirt.jpg
+    │                   bracelet.jpg
+    │                   brown-purse.jpg
+    │                   chakra-bracelet.jpg
+    │                   galaxy-earrings.jpg
+    │                   game-controller.jpg
+    │                   gaming-set.jpg
+    │                   gold-phone-case.jpg
+    │                   green-earbuds.jpg
+    │                   green-t-shirt.jpg
+    │                   grey-t-shirt.jpg
+    │                   headphones.jpg
+    │                   light-green-t-shirt.jpg
+    │                   lime-band.jpg
+    │                   mini-speakers.jpg
+    │                   painted-phone-case.jpg
+    │                   pink-band.jpg
+    │                   pink-purse.jpg
+    │                   product-placeholder.svg
+    │                   purple-band.jpg
+    │                   purple-gemstone-necklace.jpg
+    │                   purple-t-shirt.jpg
+    │                   shoes.jpg
+    │                   sneakers.jpg
+    │                   teal-t-shirt.jpg
+    │                   yellow-earbuds.jpg
+    │                   yoga-mat.jpg
+    │                   yoga-set.jpg
+    │                   
+    └───src
+        │   app.component.ts
+        │   app.config.ts
+        │   app.routes.ts
+        │   index.html
+        │   main.ts
+        │   my-routes.ts
+        │   
+        ├───app
+        │   ├───layout
+        │   │   ├───component
+        │   │   │       app.configurator.ts
+        │   │   │       app.floatingconfigurator.ts
+        │   │   │       app.footer.ts
+        │   │   │       app.layout.ts
+        │   │   │       app.menu.ts
+        │   │   │       app.menuitem.ts
+        │   │   │       app.sidebar.ts
+        │   │   │       app.topbar.ts
+        │   │   │       
+        │   │   └───service
+        │   │           layout.service.ts
+        │   │           
+        │   ├───pages
+        │   │   │   pages.routes.ts
+        │   │   │   
+        │   │   ├───admin
+        │   │   │   │   admin.routes.ts
+        │   │   │   │   index.ts
+        │   │   │   │   
+        │   │   │   ├───services
+        │   │   │   │       form-state.service.ts
+        │   │   │   │       role-http.service.ts
+        │   │   │   │       user-http.service.ts
+        │   │   │   │       
+        │   │   │   └───work-flows
+        │   │   │       └───career-registration
+        │   │   │           │   career-registration.service.ts
+        │   │   │           │   career-registration.state.ts
+        │   │   │           │   career-registration.store.ts
+        │   │   │           │   
+        │   │   │           └───components
+        │   │   │               ├───career
+        │   │   │               │       career.component.html
+        │   │   │               │       career.component.ts
+        │   │   │               │       
+        │   │   │               ├───principla-data
+        │   │   │               │       principal-data.component.html
+        │   │   │               │       principal-data.component.ts
+        │   │   │               │       
+        │   │   │               └───secondary-data
+        │   │   │                       secondary-data.component.html
+        │   │   │                       secondary-data.component.ts
+        │   │   │                       
+        │   │   └───auth
+        │   │       │   access.ts
+        │   │       │   auth-http.service.ts
+        │   │       │   auth.routes.ts
+        │   │       │   auth.service.ts
+        │   │       │   error.ts
+        │   │       │   login.ts
+        │   │       │   
+        │   │       ├───components
+        │   │       │   ├───email-reset
+        │   │       │   │       email-reset.component.html
+        │   │       │   │       email-reset.component.ts
+        │   │       │   │       
+        │   │       │   ├───email-verification
+        │   │       │   │       email-verification.component.html
+        │   │       │   │       email-verification.component.ts
+        │   │       │   │       
+        │   │       │   ├───password-changed
+        │   │       │   │       password-changed.component.html
+        │   │       │   │       password-changed.component.ts
+        │   │       │   │       
+        │   │       │   ├───password-reset
+        │   │       │   │       password-reset.component.html
+        │   │       │   │       password-reset.component.ts
+        │   │       │   │       
+        │   │       │   ├───security-question
+        │   │       │   │       security-question.component.html
+        │   │       │   │       security-question.component.ts
+        │   │       │   │       
+        │   │       │   ├───sign-in
+        │   │       │   │       sign-in.component.html
+        │   │       │   │       sign-in.component.ts
+        │   │       │   │       
+        │   │       │   ├───sign-up
+        │   │       │   │       sign-up.component.html
+        │   │       │   │       sign-up.component.ts
+        │   │       │   │       
+        │   │       │   └───terms
+        │   │       │           terms.component.html
+        │   │       │           terms.component.ts
+        │   │       │           
+        │   │       ├───interfaces
+        │   │       │       auth.interface.ts
+        │   │       │       http-response.interface.ts
+        │   │       │       index.ts
+        │   │       │       paginator.interface.ts
+        │   │       │       password-changed.interface.ts
+        │   │       │       role.interface.ts
+        │   │       │       sign-in-response.interface.ts
+        │   │       │       sign-in.interface.ts
+        │   │       │       sign-up.interface.ts
+        │   │       │       user-ldap.interface.ts
+        │   │       │       user.interface.ts
+        │   │       │       
+        │   │       └───ui
+        │   │           └───auth-provider-button
+        │   │                   auth-provider-button.component.html
+        │   │                   auth-provider-button.component.ts
+        │   │                   
+        │   └───utils
+        │       ├───components
+        │       │   ├───button-action
+        │       │   │       button-action.component.html
+        │       │   │       button-action.component.scss
+        │       │   │       button-action.component.ts
+        │       │   │       consts.ts
+        │       │   │       
+        │       │   ├───list
+        │       │   │       list.component.html
+        │       │   │       list.component.scss
+        │       │   │       list.component.ts
+        │       │   │       
+        │       │   ├───list-basic
+        │       │   │       list-basic.component.html
+        │       │   │       list-basic.component.scss
+        │       │   │       list-basic.component.ts
+        │       │   │       
+        │       │   ├───map
+        │       │   │       map.component.html
+        │       │   │       map.component.scss
+        │       │   │       map.component.ts
+        │       │   │       
+        │       │   ├───message-modal
+        │       │   │       message-modal.component.html
+        │       │   │       message-modal.component.ts
+        │       │   │       
+        │       │   ├───message-processing
+        │       │   │       message-processing.component.html
+        │       │   │       message-processing.component.ts
+        │       │   │       
+        │       │   ├───skeleton
+        │       │   │       skeleton.component.html
+        │       │   │       skeleton.component.ts
+        │       │   │       
+        │       │   ├───toggle-switch
+        │       │   │       toggle-switch.component.ts
+        │       │   │       
+        │       │   └───transactional-code
+        │       │           transactional-code.component.ts
+        │       │           
+        │       ├───directives
+        │       │       error-message.directive.ts
+        │       │       label.directive.ts
+        │       │       
+        │       ├───enums
+        │       │       button-actions.enum.ts
+        │       │       catalogue.enum.ts
+        │       │       core.enum.ts
+        │       │       index.ts
+        │       │       role.enum.ts
+        │       │       
+        │       ├───exceptions
+        │       │       handle-error.ts
+        │       │       
+        │       ├───form-validators
+        │       │       custom-validator.ts
+        │       │       
+        │       ├───helpers
+        │       │       collect-form-errors.helper.ts
+        │       │       file.helper.ts
+        │       │       formats.helper.ts
+        │       │       password-generate.helper.ts
+        │       │       
+        │       ├───icons
+        │       │       font-awesome.ts
+        │       │       
+        │       ├───interceptors
+        │       │       authentication.interceptor.ts
+        │       │       core.interceptor.ts
+        │       │       error.interceptor.ts
+        │       │       index.ts
+        │       │       token.interceptor.ts
+        │       │       version.interceptor.ts
+        │       │       
+        │       ├───interfaces
+        │       │       catalogue.interface.ts
+        │       │       col.interface.ts
+        │       │       dpa.interface.ts
+        │       │       file.interface.ts
+        │       │       form-error.interface.ts
+        │       │       http-response.interface.ts
+        │       │       index.ts
+        │       │       paginator.interface.ts
+        │       │       
+        │       ├───pipes
+        │       │       appointments-status-color.pipe.ts
+        │       │       appointments-status.pipe.ts
+        │       │       date-long.pipe.ts
+        │       │       index.ts
+        │       │       
+        │       └───services
+        │               catalogue-http.service.ts
+        │               catalogue.service.ts
+        │               core.service.ts
+        │               custom-message.service.ts
+        │               dpa-http.service.ts
+        │               favicon.service.ts
+        │               file-http.service.ts
+        │               form-registry.service.ts
+        │               index.ts
+        │               
+        ├───assets
+        │   │   styles.scss
+        │   │   tailwind.css
+        │   │   
+        │   ├───demo
+        │   │   │   code.scss
+        │   │   │   demo.scss
+        │   │   │   
+        │   │   └───flags
+        │   │           flags.css
+        │   │           
+        │   └───layout
+        │       │   layout.scss
+        │       │   _core.scss
+        │       │   _footer.scss
+        │       │   _main.scss
+        │       │   _menu.scss
+        │       │   _mixins.scss
+        │       │   _preloading.scss
+        │       │   _responsive.scss
+        │       │   _topbar.scss
+        │       │   _typography.scss
+        │       │   _utils.scss
+        │       │   
+        │       └───variables
+        │               _common.scss
+        │               _dark.scss
+        │               _light.scss
+        │               
+        └───environments
+                environment.prod.ts
+                environment.qa.ts
+                environment.ts
+                
+PS C:\Users\minda\Desktop\NuevoE> 
+
+
+import {inject, Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '@env/environment';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class UserHttpService {
+    private readonly httpClient = inject(HttpClient);
+    private readonly apiUrl = `${environment.API_URL}/auth/users`;
+
+}
+
+import {computed, effect, Injectable, signal} from '@angular/core';
+import {AbstractControl} from '@angular/forms';
+
+interface UserInterface {
+    name: string;
+    phone: string;
+}
+
+interface RoleInterface {
+    code: string;
+    name: string;
+}
+
+export interface FormStateInterface {
+    user: UserInterface | null;
+    role: RoleInterface | null;
+}
+
+const INITIAL_FORM_STATE: FormStateInterface = {
+    user: null,
+    role: null
+};
+
+const FORM_STATE_KEY = 'formState';
+const FORM_ERRORS_KEY = 'formErrors';
+
+@Injectable({providedIn: 'root'})
+export class FormStateService {
+    readonly formState = signal<FormStateInterface>(this.loadFromStorage());
+    readonly formErrors = signal<Record<string, string[]>>({});
+
+    readonly user = computed(() => this.formState().user);
+    readonly role = computed(() => this.formState().role);
+
+    constructor() {
+        effect(() => {
+            sessionStorage.setItem(FORM_STATE_KEY, JSON.stringify(this.formState()));
+            sessionStorage.setItem(FORM_ERRORS_KEY, JSON.stringify(this.formErrors()));
+        });
+    }
+
+    updateSection<K extends keyof FormStateInterface>(section: K, data: Partial<FormStateInterface[K]>) {
+        this.formState.update((state) => ({
+            ...state,
+            [section]: {
+                ...state[section], // lo anterior
+                ...data // lo nuevo
+            }
+        }));
+    }
+
+    clearState() {
+        this.formState.set(INITIAL_FORM_STATE);
+        sessionStorage.removeItem(FORM_STATE_KEY);
+    }
+
+    private loadFromStorage(): FormStateInterface {
+        const stored = sessionStorage.getItem(FORM_STATE_KEY);
+        return stored ? JSON.parse(stored) : INITIAL_FORM_STATE;
+    }
+
+    setFormErrors(componentKey: string, errors: string[]): void {
+        this.formErrors.update((current) => ({
+            ...current,
+            [componentKey]: errors
+        }));
+    }
+
+    readonly allErrors = computed(() => Object.values(this.formErrors()).flat());
+
+    readonly hasErrors = computed(() => this.allErrors().length > 0);
+
+    private readonly forms = new Map<string, AbstractControl>();
+
+    registerForm(key: string, form: AbstractControl): void {
+        this.forms.set(key, form);
+    }
+
+    unregisterForm(key: string): void {
+        this.forms.delete(key);
+    }
+
+    private markAllTouched(key?: string): void {
+        if (key) {
+            this.forms.get(key)?.markAllAsTouched();
+        } else {
+            console.log(this.forms);
+            this.forms.forEach((form) => form.markAllAsTouched());
+        }
+    }
+
+    validateAll(): boolean {
+        this.markAllTouched();
+        return !this.hasErrors();
+    }
+}
+
+
+import { inject, Injectable } from '@angular/core';
+
+import { environment } from '@env/environment';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { CoreService } from '@utils/services/core.service';
+import { HttpResponseInterface } from '@/pages/auth/work-flows';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class RoleHttpService {
+    protected readonly _coreService = inject(CoreService);
+    private readonly _httpClient = inject(HttpClient);
+    private readonly _apiUrl = `${environment.API_URL}/auth/roles`;
+
+    findCatalogues() {
+        return this._httpClient.get<HttpResponseInterface>(`${this._apiUrl}/catalogues`).pipe(
+            map((response) => {
+                return response.data;
+            })
+        );
+    }
+}
+
+<app-principal-data/>
+<app-secondary-data/>
+
+<div class="custom-form-card">
+    <div class="custom-form-grid md:grid-cols-12">
+        <div class="custom-form-field md:col-span-6 md:col-start-4">
+            <p-button
+                label="Guardar"
+                [icon]="FontAwesome.FLOPPY_DISK_REGULAR"
+                styleClass="w-full"
+                (onClick)="onSubmit()"/>
+        </div>
+    </div>
+</div>
+
+{{ careerCreateStore.formState() | json }}
+
+import {Component, inject} from '@angular/core';
+
+import {Button} from "primeng/button";
+
+import {CustomMessageService} from "@utils/services";
+import {JsonPipe} from "@angular/common";
+import {CareerRegistrationStore} from '../../career-registration.store';
+import {SecondaryDataComponent} from "../secondary-data/secondary-data.component";
+import {CareerRegistrationService} from "../../career-registration.service";
+import {
+    PrincipalDataComponent
+} from "@modules/admin/work-flows/career-registration/components/principla-data/principal-data.component";
+import {FormRegistryService} from "@utils/services/form-registry.service";
+import {FontAwesome} from "@utils/icons/font-awesome";
+
+
+@Component({
+    selector: 'app-career',
+    imports: [
+        PrincipalDataComponent,
+        Button,
+        JsonPipe,
+        SecondaryDataComponent
+    ],
+    templateUrl: './career.component.html'
+})
+export class CareerComponent {
+    private readonly formRegistryService = inject(FormRegistryService);
+    private readonly customMessageService = inject(CustomMessageService);
+    protected readonly careerCreateStore = inject(CareerRegistrationStore);
+    protected readonly careerRegistrationService = inject(CareerRegistrationService);
+
+    async onSubmit() {
+        if (this.formRegistryService.hasErrors()) {
+            this.customMessageService.showFormErrors(this.formRegistryService.errors());
+            return;
+        }
+
+        const payload = {
+            principalData: this.careerCreateStore.principalData(),
+            secondaryData: this.careerCreateStore.secondaryData(),
+        }
+
+        console.log(payload);
+
+        this.careerRegistrationService.register(payload).subscribe({
+            next: (response) => {
+            }
+        });
+    }
+
+    protected readonly FontAwesome = FontAwesome;
+}
+
+<div class="custom-form-card">
+    <form class="custom-form-grid md:grid-cols-12">
+        <!-- title -->
+        <div class="custom-form-title md:col-span-12">
+            <h4>
+                Titulo de la seccion
+            </h4>
+        </div>
+
+        <!-- code -->
+        <div class="custom-form-field md:col-span-12">
+            <label
+                appLabel
+                for="code"
+                label="Code"
+                [field]="codeField">
+            </label>
+
+            <input pInputText id="code" [formField]="codeField">
+
+            <small [appErrorMessage]="$any(codeField)"></small>
+        </div>
+
+        <!-- name -->
+        <div class="custom-form-field md:col-span-12">
+            <label
+                appLabel
+                for="name"
+                label="Name"
+                [field]="nameField">
+            </label>
+
+            <input pInputText id="name" [formField]="nameField">
+
+            <small [appErrorMessage]="$any(nameField)"></small>
+        </div>
+    </form>
+</div>
+
+import {Component, effect, inject, OnDestroy, OnInit, signal} from '@angular/core';
+
+import {email, FieldTree, form, FormField, required, SchemaPathTree} from "@angular/forms/signals";
+import {PrincipalData} from "../../career-registration.state";
+import {InputText} from "primeng/inputtext";
+import {LabelDirective} from "@utils/directives/label.directive";
+import {ErrorMessageDirective} from "@utils/directives/error-message.directive";
+import {CareerRegistrationStore} from "../..//career-registration.store";
+import {FormRegistryService} from "@utils/services/form-registry.service";
+
+const FORM_STATE_KEY = 'principalData';
+
+@Component({
+    selector: 'app-principal-data',
+    imports: [
+        InputText,
+        FormField,
+        LabelDirective,
+        ErrorMessageDirective
+    ],
+    templateUrl: './principal-data.component.html'
+})
+export class PrincipalDataComponent implements OnInit, OnDestroy {
+    private readonly formRegistryService = inject(FormRegistryService);
+    private readonly careerCreateStore = inject(CareerRegistrationStore);
+
+    protected readonly form$ = signal(this.careerCreateStore.principalData());
+
+    protected readonly formData: FieldTree<PrincipalData> = this.buildForm;
+
+    constructor() {
+        effect(() => {
+            this.careerCreateStore.updateSection(FORM_STATE_KEY, this.form$());
+        });
+    }
+
+    ngOnInit(): void {
+        this.formRegistryService.register(
+            'Datos Principales',
+            FORM_STATE_KEY,
+            this.formData,
+            this.form$()
+        );
+    }
+
+    ngOnDestroy(): void {
+        this.formRegistryService.unregister(FORM_STATE_KEY);
+    }
+
+    get buildForm() {
+        return form(this.form$, (schema) => {
+            this.validateForm(schema)
+        });
+    }
+
+    private validateForm(schema: SchemaPathTree<PrincipalData>): void {
+        //modality
+        required(schema.name, {message: 'El name es requerido'});
+
+        //isVisible
+        required(schema.code, {message: 'El code es requerido'});
+    }
+
+    get codeField() {
+        return this.formData.code;
+    }
+
+    get nameField() {
+        return this.formData.name;
+    }
+
+    get degreeField() {
+        return this.formData.degree;
+    }
+
+    get acronymField() {
+        return this.formData.acronym;
+    }
+}
+
+<div class="custom-form-card">
+    <form class="custom-form-grid md:grid-cols-12">
+        <!-- title -->
+        <div class="custom-form-section md:col-span-12">
+            <h4>
+                Datos Principales
+            </h4>
+        </div>
+
+        <!-- code -->
+        <!--        @if (isCodeRequired()) {-->
+        <div class="custom-form-field md:col-span-6">
+            <label
+                appLabel
+                for="code"
+                label="Código"
+                [field]="codeField">
+            </label>
+
+            <input pInputText id="code" [formField]="codeField">
+
+            <small [appErrorMessage]="$any(codeField)"></small>
+        </div>
+        <!--        }-->
+        <!-- name -->
+
+        <div class="custom-form-field md:col-span-6">
+            <label
+                appLabel
+                for="shortName"
+                label="Nombre corto de la carrera"
+                [field]="shortNameField">
+            </label>
+
+            <input pInputText id="shortName" [formField]="shortNameField">
+
+            <small [appErrorMessage]="$any(shortNameField)"></small>
+        </div>
+    </form>
+</div>
+
+
+import {Component, computed, effect, inject, OnDestroy, OnInit, signal, WritableSignal} from '@angular/core';
+
+import {FieldTree, form, FormField, required, SchemaPathTree, validate} from "@angular/forms/signals";
+import {SecondaryData} from "../../career-registration.state";
+import {InputText} from "primeng/inputtext";
+import {LabelDirective} from "@utils/directives/label.directive";
+import {ErrorMessageDirective} from "@utils/directives/error-message.directive";
+import {CareerRegistrationStore} from "../../career-registration.store";
+import {FormRegistryService} from "@utils/services/form-registry.service";
+
+const FORM_STATE_KEY = 'secondaryData';
+
+@Component({
+    selector: 'app-secondary-data',
+    imports: [
+        InputText,
+        LabelDirective,
+        FormField,
+        ErrorMessageDirective
+    ],
+    templateUrl: './secondary-data.component.html'
+})
+export class SecondaryDataComponent implements OnInit, OnDestroy {
+    private readonly formRegistryService = inject(FormRegistryService);
+    private readonly careerCreateStore = inject(CareerRegistrationStore);
+
+    protected readonly isShortNameRequired = computed(() =>
+        this.codeField().value() === '1'
+    );
+
+    protected readonly form$: WritableSignal<SecondaryData> = signal(this.careerCreateStore.secondaryData());
+
+    protected readonly formData: FieldTree<SecondaryData> = this.buildForm;
+
+    constructor() {
+        effect(() => {
+            this.careerCreateStore.updateSection(FORM_STATE_KEY, this.form$());
+        });
+    }
+
+    ngOnInit(): void {
+        this.formRegistryService.register(
+            'Datos Secundarios',
+            FORM_STATE_KEY,
+            this.formData,
+            this.form$()
+        );
+    }
+
+    ngOnDestroy(): void {
+        this.formRegistryService.unregister(FORM_STATE_KEY);
+    }
+
+    get buildForm() {
+        return form(this.form$, (schema) => {
+            this.validateForm(schema)
+        });
+    }
+
+    private validateForm(schema: SchemaPathTree<SecondaryData>): void {
+        // this.codeRules(schema);
+        this.shortNameRules(schema);
+        required(schema.code, {message: 'El code es requerido'});
+    }
+
+    // private codeRules(schema: SchemaPathTree<SecondaryData>) {
+    //     return validate(schema.code, (ctx) => {
+    //         if (!this.isCodeRequired()) return null;
+    //
+    //         if (!ctx.value()) {
+    //             return {
+    //                 kind: 'required',
+    //                 message: 'Código requerido'
+    //             };
+    //         }
+    //
+    //         return null;
+    //     });
+    // }
+
+    // private shortNameRules(schema: SchemaPathTree<SecondaryData>) {
+    //     return validate(schema.shortName, (ctx) => {
+    //
+    //         const code = this.codeField().value();
+    //
+    //         if (code !== '10') return null;
+    //
+    //
+    //         const value = ctx.value() ?? '';
+    //
+    //         if (value.length < 2) {
+    //             return {
+    //                 kind: 'minLength',
+    //                 message: 'Debe tener al menos 2 caracteres'
+    //             };
+    //         }
+    //
+    //         return null;
+    //     });
+    // }
+
+    private shortNameRules(schema: SchemaPathTree<SecondaryData>) {
+        return validate(schema.shortName, (ctx) => {
+            if (!this.isShortNameRequired()) return null;
+
+            if (!ctx.value()) {
+                return {
+                    kind: 'required',
+                    message: 'Shortname es requerido'
+                };
+            }
+
+            return null;
+        });
+    }
+
+    get codeField() {
+        return this.formData.code;
+    }
+
+    get shortNameField() {
+        return this.formData.shortName;
+    }
+
+    get logoField() {
+        return this.formData.logo;
+    }
+
+    get resolutionNumberField() {
+        return this.formData.resolutionNumber;
+    }
+}
+
+import {inject, Injectable} from "@angular/core";
+import {HttpClient} from "@angular/common/http";
+import {HttpResponseInterface} from "@utils/interfaces";
+import {map} from "rxjs/operators";
+
+@Injectable(
+    {providedIn: 'root'}
+)
+export class CareerRegistrationService {
+    private readonly httpClient = inject(HttpClient);
+
+    register(payload:any){
+        const url = '';
+
+        return this.httpClient.patch<HttpResponseInterface>(url, payload).pipe(
+            map((response) => {
+                return response.data;
+            })
+        );
+    }
+}
+
+export interface CareerRegistrationState {
+    principalData: PrincipalData;
+    secondaryData: SecondaryData;
+}
+
+export interface PrincipalData {
+    code: string;
+    name: string;
+    degree: string;
+    acronym: string;
+}
+
+export interface SecondaryData {
+    code: string;
+    shortName: string;
+    logo: string;
+    resolutionNumber: string;
+}
+
+export const INITIAL_STATE: CareerRegistrationState = {
+    principalData: {
+        code: '',
+        name: '',
+        degree: '',
+        acronym: ''
+    },
+
+    secondaryData: {
+        code: '',
+        shortName: '',
+        logo: '',
+        resolutionNumber: ''
+    },
+};
+
+
+import {computed, Injectable, signal} from "@angular/core";
+import {CareerRegistrationState, INITIAL_STATE} from "./career-registration.state";
+
+const FORM_STATE_KEY = 'formState';
+
+@Injectable({providedIn: 'root'})
+export class CareerRegistrationStore {
+    readonly formState = signal<CareerRegistrationState>(this.loadFromStorage());
+    readonly formErrors = signal<Record<string, string[]>>({});
+
+    readonly principalData = computed(() => this.formState().principalData);
+    readonly secondaryData = computed(() => this.formState().secondaryData);
+
+
+    updateSection<K extends keyof CareerRegistrationState>(
+        section: K,
+        data: Partial<CareerRegistrationState[K]>
+    ) {
+        this.formState.update(state => ({
+            ...state,
+            [section]: {
+                ...state[section],
+                ...data
+            }
+        }));
+    }
+
+    private loadFromStorage(): CareerRegistrationState {
+        const stored = sessionStorage.getItem(FORM_STATE_KEY);
+        return stored ? JSON.parse(stored) : INITIAL_STATE;
+    }
+}
+
+
+import {Routes} from '@angular/router';
+import {MY_ROUTES} from '@routes';
+import {CareerComponent} from "@modules/admin/work-flows/career-registration/components/career/career.component";
+
+export default [
+    {
+        path: MY_ROUTES.adminPages.user.base,
+        title: 'Listado de Usuarios',
+        loadComponent: () => CareerComponent
+    },
+] as Routes;
+
+
+import {Routes} from '@angular/router';
+import {MY_ROUTES} from "@routes";
+
+export default [
+    {
+        path: MY_ROUTES.adminPages.user.base,
+        title: 'Users',
+        loadChildren: () => import('@/pages/admin/admin.routes')
+    },
+    {path: '**', redirectTo: '/notfound'}
+] as Routes;
+
+
+import {Directive, ElementRef, inject, Input, OnDestroy, OnInit, Renderer2, effect, untracked} from '@angular/core';
+import {FieldTree} from '@angular/forms/signals';
+
+@Directive({
+    selector: '[appErrorMessage]',
+    standalone: true
+})
+export class ErrorMessageDirective implements OnInit, OnDestroy {
+    private readonly _elementRef: ElementRef<HTMLDivElement> = inject(ElementRef);
+    private readonly _renderer = inject(Renderer2);
+    private readonly _nativeElement: HTMLDivElement;
+
+    @Input({required: true}) appErrorMessage!: FieldTree<any>;
+
+    private readonly _errorMessages: Record<string, string | ((errors: any) => string)> = {
+        required: () => 'El campo es obligatorio.',
+        requiredTrue: () => 'El campo es obligatorio.',
+        email: () => 'Correo electrónico no es válido.',
+        minlength: (e) => `Debe contener como mínimo ${e['minlength']['requiredLength']} caracteres.`,
+        maxlength: (e) => `Debe contener como máximo ${e['maxlength']['requiredLength']} caracteres.`,
+        min: (e) => `Número mínimo permitido es ${e['min']['min']}.`,
+        max: (e) => `Número máximo permitido es ${e['max']['max']}.`,
+        pattern: () => 'No cumple con el formato.',
+        noPasswordMatch: () => 'Las contraseñas no coinciden.',
+        dateInvalid: () => 'No es una fecha válida.',
+        dateMax: (e) => `La fecha ${e['dateMax']['actualDate']} no puede ser mayor a ${e['dateMax']['requiredDate']}.`,
+        dateMin: (e) => `La fecha ${e['dateMin']['actualDate']} no puede ser menor a ${e['dateMin']['requiredDate']}.`,
+        invalidEmail: () => 'Correo electrónico no es válido.',
+        invalidEmailDomain: () => 'El correo no puede pertenecer al Ministerio de Producción.',
+        phoneNotAvailable: () => 'Este teléfono no está disponible.',
+        agreementExists: () => 'El número interno de convenio ya se encuentra registrado.',
+        registeredIdentification: () => 'El RUC ya se encuentra registrado.',
+        pendingPaymentRuc: () => 'El RUC ingresado mantiene pagos pendientes.',
+        unavailableUser: () => 'El usuario no se encuentra disponible.',
+        unavailableEmail: () => 'El correo ya se encuentra en uso, por favor intente con otro.',
+        userExist: () => 'El usuario ya se encuentra registrado, por favor intente con otro.',
+        unregisteredUser: () => 'El usuario no se encuentra registrado, por favor registre una cuenta.',
+        invalidPasswordPolicesUpper: (e) => `La contraseña debe tener al menos ${e['invalidPasswordPolicesUpper']['length']} mayúscula.`,
+        invalidPasswordPolicesLower: (e) => `La contraseña debe tener al menos ${e['invalidPasswordPolicesLower']['length']} minúsculas.`,
+        invalidPasswordPolicesNumber: (e) => `La contraseña debe tener al menos ${e['invalidPasswordPolicesNumber']['length']} números.`,
+        invalidPasswordPolicesSpecialCharacter: (e) => `La contraseña debe tener al menos ${e['invalidPasswordPolicesSpecialCharacter']['length']} caracter especial ${e['invalidPasswordPolicesSpecialCharacter']['allowed']}.`,
+        invalidTransactionalCode: () => 'El código de seguridad no es válido.',
+    };
+
+    constructor() {
+        this._nativeElement = this._elementRef.nativeElement;
+
+        effect(() => {
+            const state = this.appErrorMessage();
+            const touched = state.touched();
+            const dirty = state.dirty();
+            const errors = state.errors();
+
+            untracked(() => this._render(touched, dirty, errors));
+        });
+    }
+
+    ngOnInit(): void {
+
+    }
+
+    ngOnDestroy(): void {
+    }
+
+    private _render(touched: boolean, dirty: boolean, errors: readonly any[]): void {
+        let text = '';
+
+        if ((touched || dirty) && errors?.length) {
+            const messages = errors
+                .map(err => {
+                    const handler = this._errorMessages[err.kind];
+                    if (handler) {
+                        const errRecord = {[err.kind]: err};
+                        return typeof handler === 'function' ? handler(errRecord) : handler;
+                    }
+                    return err.message ?? null;
+                })
+                .filter(Boolean);
+
+            text = messages.join('\n');
+            this._renderer.addClass(this._nativeElement, 'text-red-500');
+        } else {
+            this._renderer.removeClass(this._nativeElement, 'text-red-500');
+        }
+
+        this._renderer.setProperty(this._nativeElement, 'innerText', text);
+    }
+}
+
+
+import {
+    AfterViewInit,
+    computed,
+    Directive,
+    effect,
+    ElementRef,
+    HostBinding,
+    inject,
+    Input,
+    OnChanges,
+    Renderer2,
+    signal,
+    SimpleChanges,
+    afterNextRender,
+} from '@angular/core';
+import {FieldState} from '@angular/forms/signals';
+
+type SignalField = () => FieldState<unknown>;
+
+@Directive({
+    selector: '[appLabel]',
+})
+export class LabelDirective implements OnChanges {
+    @HostBinding('style.display') display = 'block';
+    @HostBinding('style.width') width = '100%';
+    @HostBinding('style.whiteSpace') whiteSpace = 'normal';
+
+    @Input() label: string | null = null;
+    @Input() appendColon = false;
+
+    @Input() set field(f: SignalField | null) {
+        this._field.set(f);
+    }
+
+    private readonly el = inject(ElementRef<HTMLElement>);
+    private readonly renderer = inject(Renderer2);
+
+    private readonly _field = signal<SignalField | null>(null);
+    private readonly _viewReady = signal(false); // signal en lugar de boolean
+
+    private readonly _required = computed(() => {
+        const f = this._field();
+        if (!f) return false;
+        const state = f() as any;
+        const errors = state?.validationState?.errors?.() ?? [];
+        return errors.some(
+            (e: any) => e.kind === 'required' || e.message?.toLowerCase().includes('required')
+        );
+    });
+    constructor() {
+        // Marca el view como listo después del primer render
+        afterNextRender(() => {
+            this._viewReady.set(true);
+            if (this.label != null && this.label !== '') {
+                this.setInnerHTML(this.appendColon ? `${this.label}:` : this.label);
+            }
+        });
+
+        // El effect lee _viewReady() y _required() — se re-ejecuta cuando cualquiera cambia
+        effect(() => {
+            if (!this._viewReady()) return; // espera al render
+            this.updateRequiredIcon();
+        });
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (!this._viewReady()) return;
+        if ('label' in changes || 'appendColon' in changes) {
+            if (this.label != null && this.label !== '') {
+                this.setInnerHTML(this.appendColon ? `${this.label}:` : this.label);
+                this.updateRequiredIcon();
+            }
+        }
+    }
+
+    private setInnerHTML(html: string): void {
+        this.renderer.setProperty(this.el.nativeElement, 'innerHTML', html + ':');
+    }
+
+    private updateRequiredIcon(): void {
+        const host = this.el.nativeElement;
+        const existing = host.querySelector('[data-app-label-icon="true"]');
+        if (this._required()) {
+            if (!existing) {
+                const icon = this.renderer.createElement('i');
+                this.renderer.setAttribute(icon, 'data-app-label-icon', 'true');
+                this.renderer.addClass(icon, 'pi');
+                this.renderer.addClass(icon, 'pi-asterisk');
+                this.renderer.addClass(icon, 'text-red-500');
+                this.renderer.addClass(icon, 'mr-1');
+                this.renderer.setStyle(icon, 'font-size', '0.6rem');
+                this.renderer.setAttribute(icon, 'aria-hidden', 'true');
+                this.renderer.insertBefore(host, icon, host.firstChild);
+            }
+        }
+    }
+}
+
+
+export const handleError = (error: any) => {
+    let errorMessage = 'Ocurrió un error';
+
+    switch (error.code) {
+        case 'auth/wrong-password':
+            errorMessage = 'Contraseña incorrecta';
+            break;
+        case 'auth/user-not-found':
+            errorMessage = 'Usuario no encontrado';
+            break;
+        case 'auth/email-already-in-use':
+            errorMessage = 'El correo ya está registrado';
+            break;
+        case 'auth/invalid-email':
+            errorMessage = 'El correo no es válido';
+
+            break;
+        case 'auth/invalid-credential':
+            errorMessage = 'Usuario y/o Contraseña no válidos';
+            break;
+        case 'auth/user-disabled':
+            errorMessage = 'Usuario Suspendido';
+            break;
+        default:
+            errorMessage = 'Error desconocido: ' + error.message;
+            break;
+    }
+
+    return errorMessage;
+};
+
+
+
+
+import { AbstractControl, AsyncValidatorFn, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { debounceTime, Observable, of, switchMap, take } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AuthHttpService } from '@modules/auth/auth-http.service';
+
+export function invalidEmailValidator(): ValidatorFn {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    return (control: AbstractControl): ValidationErrors | null => {
+        const value = control.value;
+        return !value || emailRegex.test(value) ? null : { invalidEmail: true };
+    };
+}
+
+export function invalidEmailDomainValidator(domain: string = 'produccion.gob.ec'): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+        const value: string = control.value;
+
+        if (!value) return null;
+
+        const parts = value.split('@');
+        if (parts.length !== 2) return null;
+
+        const emailDomain = parts[1].toLowerCase();
+
+        return emailDomain === domain.toLowerCase() ? { invalidEmailDomain: { disallowedDomain: domain } } : null;
+    };
+}
+
+export function registeredIdentificationValidator(authHttpService: AuthHttpService): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+        if (!control.value) return of(null);
+
+        return of(control.value).pipe(
+            debounceTime(300),
+            take(1),
+            switchMap((value) => authHttpService.verifyUserExist(value).pipe(map((response) => (response ? { registeredIdentification: true } : null))))
+        );
+    };
+}
+
+export function userExistValidator(authHttpService: AuthHttpService): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+        if (!control.value) return of(null);
+
+        return of(control.value).pipe(
+            debounceTime(300),
+            take(1),
+            switchMap((value) => authHttpService.verifyUserExist(value).pipe(map((response) => (response ? { userExist: true } : null))))
+        );
+    };
+}
+
+export function unregisteredUserValidator(authHttpService: AuthHttpService): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+        if (!control.value) return of(null);
+
+        return of(control.value).pipe(
+            debounceTime(300),
+            take(1),
+            switchMap((value) => authHttpService.verifyUserExist(value).pipe(map((response) => (response ? null : { unregisteredUser: true }))))
+        );
+    };
+}
+
+export function unavailableUserValidator(authHttpService: AuthHttpService): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+        if (!control.value) return of(null);
+
+        return of(control.value).pipe(
+            debounceTime(300),
+            take(1),
+            switchMap((value) => authHttpService.verifyUserExist(value).pipe(map((response) => (response ? { unavailableUser: true } : null))))
+        );
+    };
+}
+
+export function unavailableEmailValidator(authHttpService: AuthHttpService): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+        if (!control.value) return of(null);
+
+        return of(control.value).pipe(
+            debounceTime(300),
+            take(1),
+            switchMap((value) => authHttpService.verifyEmailExist(value).pipe(map((response) => (response ? { unavailableEmail: true } : null))))
+        );
+    };
+}
+
+export function userUpdatedValidator(authHttpService: AuthHttpService, userId = ''): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+        if (!control.value) return of(null);
+
+        return of(control.value).pipe(
+            debounceTime(300),
+            take(1),
+            switchMap((value) => authHttpService.verifyUserUpdated(value, userId).pipe(map((response) => (response ? { userExist: true } : null))))
+        );
+    };
+}
+
+export function pendingPaymentRucValidator(authHttpService: AuthHttpService): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+        if (!control.value) return of(null);
+
+        return of(control.value).pipe(
+            debounceTime(300),
+            take(1),
+            switchMap((value) => authHttpService.verifyRucPendingPayment(value).pipe(map((response) => (response ? { pendingPaymentRuc: true } : null))))
+        );
+    };
+}
+
+export function dateGreaterThan(startDateKey: string, endDateKey: string): ValidatorFn {
+    return (form: AbstractControl): ValidationErrors | null => {
+        const start = form.get(startDateKey)?.value;
+        const end = form.get(endDateKey)?.value;
+
+        if (!start || !end) return null;
+
+        const startDate = new Date(start);
+        const endDate = new Date(end);
+
+        if (endDate < startDate) {
+            form.get(startDateKey)?.setErrors({ dateGreaterThan: true, endDate, startDate });
+            form.get(endDateKey)?.setErrors({ dateGreaterThan: true, endDate, startDate });
+            return { dateGreaterThan: true, endDate, startDate };
+        }
+
+        form.get(startDateKey)?.setErrors(null);
+        form.get(endDateKey)?.setErrors(null);
+
+        return null;
+    };
+}
+
+export function passwordPolicesValidator(): ValidatorFn {
+    const upperRegex = /[A-Z]/;
+    const lowerRegex = /(?:.*[a-z]){4,}/;
+    const numberRegex = /(?:.*\d){2,}/;
+    const specialCharacterRegex = /[._+\-*@$!]/;
+
+    return (control: AbstractControl): ValidationErrors | null => {
+        const value = control.value;
+
+        const errors: any = {};
+
+        if (!upperRegex.test(value)) {
+            errors.invalidPasswordPolicesUpper = {
+                length: 1
+            };
+        }
+
+        if (!lowerRegex.test(value)) {
+            errors.invalidPasswordPolicesLower = {
+                length: 4
+            };
+        }
+
+        if (!numberRegex.test(value)) {
+            errors.invalidPasswordPolicesNumber = {
+                length: 2
+            };
+        }
+
+        if (!specialCharacterRegex.test(value)) {
+            errors.invalidPasswordPolicesSpecialCharacter = {
+                length: 1,
+                allowed: '. _ + - * @ $ !'
+            };
+        }
+
+        return Object.keys(errors).length ? errors : null;
+    };
+}
+
+export function matchPasswords(password: string, passwordConfirm: string): ValidatorFn {
+    return (group: AbstractControl): ValidationErrors | null => {
+        const control = group.get(password);
+        const matchingControl = group.get(passwordConfirm);
+
+        // Si los controles no existen o si el campo de confirmación ya tiene otro error (ej. required),
+        // no hacemos nada para no sobrescribir validaciones previas.
+        if (!control || !matchingControl || (matchingControl.errors && !matchingControl.errors['mustMatch'])) {
+            return null;
+        }
+
+        // Comprobamos si los valores son diferentes
+        if (control.value !== matchingControl.value) {
+            // Si no coinciden, seteamos el error 'mustMatch' en el control de confirmación
+            matchingControl.setErrors({ noPasswordMatch: true });
+            return { noPasswordMatch: true };
+        } else {
+            // Si coinciden, limpiamos el error
+            matchingControl.setErrors(null);
+            return null;
+        }
+    };
+}
+
+export const MY_ROUTES = {
+    main: 'main',
+    home: '',
+    layout: {
+        base: 'layout'
+    },
+    errorPages: {
+        base: 'errors',
+        unauthorized: {
+            absolute: '/errors/401',
+            base: '401'
+        },
+        forbidden: {
+            absolute: '/errors/403',
+            base: '403'
+        },
+        notFound: {
+            absolute: '/errors/404',
+            base: '404'
+        },
+        unavailable: {
+            absolute: '/errors/503',
+            base: '503'
+        }
+    },
+    corePages: {
+        base: 'core',
+        absolute: '/main/core',
+        shared: {
+            base: 'shared',
+            absolute: '/main/core/shared',
+            simulator: {
+                base: 'simulators',
+                absolute: '/main/core/shared/simulators'
+            }
+        },
+        dac: {
+            base: 'dac',
+            absolute: '/main/core/dac',
+            dashboard: {
+                base: 'dashboard',
+                absolute: '/main/core/dac/dashboard'
+            },
+            simulator: {
+                base: 'simulators',
+                absolute: '/main/core/dac/simulators'
+            },
+            cadastre: {
+                base: 'cadastres',
+                absolute: '/main/core/dac/cadastres'
+            },
+            processLog: {
+                base: 'process-logs',
+                absolute: '/main/core/dac/process-logs'
+            }
+        },
+        specialist: {
+            base: 'specialist',
+            absolute: '/main/core/specialist',
+            dashboard: {
+                base: 'dashboard',
+                absolute: '/main/core/specialist/dashboard'
+            },
+            simulator: {
+                base: 'simulators',
+                absolute: '/main/core/specialist/simulators'
+            },
+            process: {
+                base: 'processes',
+                absolute: '/main/core/specialist/processes'
+            },
+            cadastre: {
+                base: 'cadastres',
+                absolute: '/main/core/specialist/cadastres'
+            },
+            processLog: {
+                base: 'process-logs',
+                absolute: '/main/core/specialist/process-logs'
+            }
+        },
+        gad: {
+            base: 'gad',
+            absolute: '/main/core/gad',
+            dashboard: {
+                base: 'dashboard',
+                absolute: '/main/core/gad/dashboard'
+            },
+            simulator: {
+                base: 'simulators',
+                absolute: '/main/core/gad/simulators'
+            },
+            cadastre: {
+                base: 'cadastres',
+                absolute: '/main/core/gad/cadastres'
+            },
+            processLog: {
+                base: 'process-logs',
+                absolute: '/main/core/gad/process-logs'
+            }
+        },
+        external: {
+            base: 'external',
+            absolute: '/main/core/external',
+            dashboard: {
+                base: 'dashboard',
+                absolute: '/main/core/external/dashboard'
+            },
+            simulator: {
+                base: 'simulators',
+                absolute: '/main/core/external/simulators'
+            },
+            accreditation: {
+                base: 'accreditations',
+                absolute: '/main/core/external/accreditations'
+            },
+            guideAccreditation: {
+                base: 'guide-accreditations',
+                absolute: '/main/core/external/guide-accreditations'
+            },
+            establishment: {
+                base: 'establishments',
+                absolute: '/main/core/external/establishments'
+            },
+            guideEstablishment: {
+                base: 'guide-establishments',
+                absolute: '/main/core/external/guide-establishments'
+            }
+        },
+        technician: {
+            base: 'technician',
+            absolute: '/main/core/technician',
+            dashboard: {
+                base: 'dashboard',
+                absolute: '/main/core/technician/dashboard'
+            },
+            simulator: {
+                base: 'simulators',
+                absolute: '/main/core/technician/simulators'
+            },
+            process: {
+                base: 'processes',
+                absolute: '/main/core/technician/processes'
+            },
+            cadastre: {
+                base: 'cadastres',
+                absolute: '/main/core/technician/cadastres'
+            },
+            processLog: {
+                base: 'process-logs',
+                absolute: '/main/core/technician/process-logs'
+            }
+        }
+    },
+    publicPages: {
+        base: 'public',
+        absolute: '/public',
+        emailVerification: {
+            base: 'email-verifications',
+            absolute: '/public/email-verifications'
+        },
+        simulator: {
+            base: 'simulators',
+            absolute: '/public/simulators'
+        },
+        icons: {
+            base: 'icons',
+            absolute: '/public/icons'
+        },
+        terms: {
+            base: 'terms',
+            absolute: '/public/terms'
+        },
+        passwordChanged: {
+            base: 'password-changed',
+            absolute: '/public/password-changed'
+        },
+        securityQuestions: {
+            base: 'security-questions',
+            absolute: '/public/security-questions'
+        }
+    },
+    authPages: {
+        base: 'auth',
+        dashboard: {
+            base: 'dashboard',
+            absolute: '/auth/dashboard'
+        },
+        signIn: {
+            base: 'sign-in',
+            absolute: '/auth/sign-in'
+        },
+        signUp: {
+            base: 'sign-up',
+            absolute: '/auth/sign-up'
+        },
+        passwordReset: {
+            base: 'password-reset',
+            absolute: '/auth/password-reset'
+        },
+        passwordChanged: {
+            base: 'password-changed',
+            absolute: '/auth/password-changed'
+        },
+        securityQuestions: {
+            base: 'security-questions',
+            absolute: '/auth/security-questions'
+        }
+    },
+    adminPages: {
+        base: 'admin',
+        user: {
+            base: 'users',
+            absolute: '/main/admin/users',
+            form: {
+                base: 'users/form',
+                absolute: '/main/admin/users/form'
+            },
+            otro: {
+                base: 'users/otro',
+                absolute: '/main/admin/users/otro'
+            },
+            profile: {
+                base: 'users/profile',
+                absolute: '/main/admin/users/profile'
+            }
+        }
+    },
+    dashboards: {
+        base: 'dashboards',
+        absolute: '/main/dashboards'
+    }
+};
+
+
+import { inject } from '@angular/core';
+import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
+import { switchMap, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+import { CoreService } from '@utils/services/core.service';
+import { AuthService } from '@modules/auth/auth.service';
+import { AuthHttpService } from '../../pages/auth/auth-http.service';
+import { MY_ROUTES } from '@routes';
+
+export const authenticationInterceptor: HttpInterceptorFn = (req, next) => {
+    const coreService = inject(CoreService);
+    const authService = inject(AuthService);
+    const authHttpService = inject(AuthHttpService);
+    const router = inject(Router);
+
+    const isRefreshRequest = req.url.includes('/refresh-token');
+
+    const logout = () => {
+        authService.removeLogin();
+        authHttpService.signOut().subscribe({ error: () => {} });
+        
+        // 🛡️ Ajuste dinámico para silenciar a TypeScript sin alterar tu ruta original
+        router.navigate([(MY_ROUTES as any).authPages.signIn.absolute]);
+    };
+
+    return next(req).pipe(
+        catchError((error: HttpErrorResponse) => {
+            /* ===========================
+             * 401 - UNAUTHORIZED OR TOKEN EXPIRADO
+             * =========================== */
+            if (error.status === 401) {
+                if (!authService.refreshToken || isRefreshRequest) {
+                    logout();
+                    return throwError(() => error);
+                }
+
+                return authHttpService.refreshToken().pipe(
+                    switchMap(({ accessToken, refreshToken }) => {
+                        authService.accessToken = accessToken;
+                        authService.refreshToken = refreshToken;
+
+                        return next(
+                            req.clone({
+                                setHeaders: {
+                                    Authorization: authService.accessToken || ''
+                                }
+                            })
+                        );
+                    }),
+                    catchError(() => {
+                        logout();
+                        return throwError(() => error);
+                    })
+                );
+            }
+
+            /* ===========================
+             * 403 - PERMISOS / CUENTA
+             * =========================== */
+            if (error.status === 403) {
+                switch (error.error?.error) {
+                    case 'INSUFFICIENT_PERMISSIONS':
+                        router.navigate([MY_ROUTES.errorPages.forbidden.absolute]);
+                        break;
+
+                    case 'ACCOUNT_SUSPENDED':
+                    case 'ACCOUNT_LOCKED':
+                        logout();
+                        break;
+
+                    default:
+                        logout();
+                }
+
+                return throwError(() => error);
+            }
+
+            /* ===========================
+             * 503 - MANTENIMIENTO
+             * =========================== */
+            if (error.status === 503) {
+                coreService.serviceUnavailable = error.error?.data;
+                logout();
+                return throwError(() => error);
+            }
+
+            return throwError(() => error);
+        })
+    );
+};
+
+
+import { inject } from '@angular/core';
+import { HttpEvent, HttpHeaders, HttpInterceptorFn, HttpParams, HttpResponse } from '@angular/common/http';
+import { finalize, tap } from 'rxjs/operators';
+import { CoreService } from '@utils/services/core.service';
+import { CustomMessageService } from '@utils/services';
+
+export const coreInterceptor: HttpInterceptorFn = (req, next) => {
+    let flag: boolean | undefined = false;
+    const coreService = inject(CoreService);
+    const customMessageService = inject(CustomMessageService);
+    let headers = req.headers ? req.headers : new HttpHeaders();
+    let params = req.params ? req.params : new HttpParams();
+
+    if (params.get('page')) {
+        if (!params.get('limit')) {
+            params = params.append('limit', 10);
+        }
+    }
+
+    // headers = headers.append('Accept', 'application/json');
+    //
+    // flag = req.headers.getAll('Content-Type')?.some((header) => header === 'multipart/form-data');
+    //
+    // if (!flag) {
+    //     headers = headers.append('Content-Type', 'application/json');
+    // }
+
+    coreService.showLoading();
+    coreService.showProcessing();
+
+    return next(req.clone({ headers, params })).pipe(
+        tap({
+            next: (event: HttpEvent<any>) => {
+                if (event instanceof HttpResponse) {
+                    // const status = event.status;
+                    // const resHeaders = event.headers; // <-- headers de respuesta
+
+                    if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(req.method)) {
+                        if (!event.url?.includes('refresh-token')) {
+                            customMessageService.showHttpSuccess(event.body);
+                        }
+                    }
+
+                    if (['GET'].includes(req.method)) {
+                        if (event.url?.includes('transactional-codes')) {
+                            customMessageService.showHttpSuccess(event.body);
+                        }
+                    }
+                }
+            }
+        }),
+        finalize(() => {
+            coreService.hideLoading();
+            coreService.hideProcessing();
+        })
+    );
+};
+ 
+
+
+import { inject } from '@angular/core';
+import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { CoreService } from '@utils/services/core.service';
+import { CustomMessageService } from '@utils/services/custom-message.service';
+
+export const errorInterceptor: HttpInterceptorFn = (req, next) => {
+    const coreService = inject(CoreService);
+    const customMessageService = inject(CustomMessageService);
+
+    return next(req).pipe(
+        catchError((error: HttpErrorResponse) => {
+            // 🛡️ SI ES UN ERROR 409 (Duplicado): Ocultamos los spinners y dejamos 
+            // pasar el error limpio para que se dispare tu alerta <p-toast> personalizada
+            if (error.status === 409) {
+                coreService.hideLoading();
+                coreService.hideProcessing();
+                return throwError(() => error);
+            }
+
+            // Para cualquier otro error genérico de la app, mantiene tu lógica original
+            if (error.error?.error !== 'EXPIRED_TOKEN') {
+                coreService.hideLoading();
+                coreService.hideProcessing();
+                customMessageService.showHttpError(error.error);
+            }
+
+            return throwError(() => error);
+        })
+    );
+};
+
+
+import { authenticationInterceptor } from './authentication.interceptor';
+import { tokenInterceptor } from './token.interceptor';
+import { errorInterceptor } from './error.interceptor';
+import { versionInterceptor } from './version.interceptor';
+import { coreInterceptor } from './core.interceptor';
+
+export const HttpInterceptorProviders = [
+    tokenInterceptor,
+    authenticationInterceptor,
+    errorInterceptor,
+    versionInterceptor,
+    coreInterceptor
+];
+
+
+import {inject} from '@angular/core';
+import {HttpHeaders, HttpInterceptorFn} from '@angular/common/http';
+import {AuthService} from '@modules/auth/auth.service';
+import { AuthHttpService } from '../../pages/auth/auth-http.service';
+
+export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
+    const authService = inject(AuthService);
+    const authHttpService = inject(AuthHttpService);
+    let headers = req.headers ? req.headers : new HttpHeaders();
+
+    if (authService.accessToken && !headers.get('Authorization')) {
+        headers = headers.append('Authorization', authService.accessToken);
+    }
+
+    return next(req.clone({headers}));
+};
+
+
+
+import { HttpResponse, HttpInterceptorFn } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
+import { inject } from '@angular/core';
+import { CoreService } from '@utils/services/core.service';
+import {HttpResponseInterface} from "@utils/interfaces";
+
+export const versionInterceptor: HttpInterceptorFn = (req, next) => {
+    const _coreService = inject(CoreService);
+
+    return next(req.clone()).pipe(
+        tap((httpEvent) => {
+            if (httpEvent.type === 0) {
+                return;
+            }
+
+            if (httpEvent instanceof HttpResponse) {
+                const version = (httpEvent.body as HttpResponseInterface).version;
+
+                if (version) {
+                    _coreService.newVersion = version;
+
+                    if (!_coreService.version) {
+                        _coreService.updateSystem();
+                    } else if (version != _coreService.version) {
+                        if (version != _coreService.version) {
+                            // messageService.questionVersion(version)
+                            //   .then(result => {
+                            //     if (result.isConfirmed) {
+                            //       coreService.updateSystem();
+                            //     }
+                            //   });
+                        }
+                    }
+                }
+            }
+        })
+    );
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

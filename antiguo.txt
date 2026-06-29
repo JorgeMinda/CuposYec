@@ -1,0 +1,1744 @@
+PS C:\Users\minda\Desktop\Yec2> cd .\Proyecto-YEC\
+PS C:\Users\minda\Desktop\Yec2\Proyecto-YEC> cd .\titulacion\
+PS C:\Users\minda\Desktop\Yec2\Proyecto-YEC\titulacion> tree /f 
+Listado de rutas de carpetas
+El número de serie del volumen es B68E-6541
+C:.
+│   angular.json
+│   basePr.txt
+│   eslint.config.js
+│   LICENSE.md
+│   package-lock.json
+│   package.json
+│   README.md
+│   tsconfig.app.json
+│   tsconfig.json
+│   tsconfig.spec.json
+│   vercel.json
+│   
+├───.angular
+│   └───cache
+│       └───21.2.15
+│           └───sakai-ng
+│               │   .tsbuildinfo
+│               │   
+│               └───vite
+│                   │   com.chrome.devtools.json
+│                   │   
+│                   └───deps
+│                           @angular_common.js
+│                           @angular_common.js.map
+│                           @angular_common_http.js
+│                           @angular_common_http.js.map
+│                           @angular_core.js
+│                           @angular_core.js.map
+│                           @angular_forms.js
+│                           @angular_forms.js.map
+│                           @angular_forms_signals.js
+│                           @angular_forms_signals.js.map
+│                           @angular_platform-browser.js
+│                           @angular_platform-browser.js.map
+│                           @angular_router.js
+│                           @angular_router.js.map
+│                           @primeuix_themes.js
+│                           @primeuix_themes.js.map
+│                           @primeuix_themes_aura.js
+│                           @primeuix_themes_aura.js.map
+│                           @primeuix_themes_lara.js
+│                           @primeuix_themes_lara.js.map
+│                           @primeuix_themes_nora.js
+│                           @primeuix_themes_nora.js.map
+│                           chunk-35UO5AUM.js
+│                           chunk-35UO5AUM.js.map
+│                           chunk-4NI4NQOO.js
+│                           chunk-4NI4NQOO.js.map
+│                           chunk-53B2AV33.js
+│                           chunk-53B2AV33.js.map
+│                           chunk-5NILKMMY.js
+│                           chunk-5NILKMMY.js.map
+│                           chunk-634X4GHH.js
+│                           chunk-634X4GHH.js.map
+│                           chunk-A7MYJTSB.js
+│                           chunk-A7MYJTSB.js.map
+│                           chunk-BBEL5GDT.js
+│                           chunk-BBEL5GDT.js.map
+│                           chunk-BNCEF6CQ.js
+│                           chunk-BNCEF6CQ.js.map
+│                           chunk-D5HPMNDN.js
+│                           chunk-D5HPMNDN.js.map
+│                           chunk-DEHOKHWM.js
+│                           chunk-DEHOKHWM.js.map
+│                           chunk-DN6NZBTT.js
+│                           chunk-DN6NZBTT.js.map
+│                           chunk-FIXPDGRC.js
+│                           chunk-FIXPDGRC.js.map
+│                           chunk-GJUEZIHY.js
+│                           chunk-GJUEZIHY.js.map
+│                           chunk-GOMI4DH3.js
+│                           chunk-GOMI4DH3.js.map
+│                           chunk-H7DUMZV3.js
+│                           chunk-H7DUMZV3.js.map
+│                           chunk-IEBPUFQA.js
+│                           chunk-IEBPUFQA.js.map
+│                           chunk-L2RPXDUA.js
+│                           chunk-L2RPXDUA.js.map
+│                           chunk-MCSHUHOX.js
+│                           chunk-MCSHUHOX.js.map
+│                           chunk-MQDHMXVP.js
+│                           chunk-MQDHMXVP.js.map
+│                           chunk-OTHRFURQ.js
+│                           chunk-OTHRFURQ.js.map
+│                           chunk-PLTDBEWO.js
+│                           chunk-PLTDBEWO.js.map
+│                           chunk-PTJL6RB4.js
+│                           chunk-PTJL6RB4.js.map
+│                           chunk-Q4GF4SUU.js
+│                           chunk-Q4GF4SUU.js.map
+│                           chunk-ROLJCQBI.js
+│                           chunk-ROLJCQBI.js.map
+│                           chunk-RRWSBWHD.js
+│                           chunk-RRWSBWHD.js.map
+│                           chunk-S22UIH5A.js
+│                           chunk-S22UIH5A.js.map
+│                           chunk-SV77J4UR.js
+│                           chunk-SV77J4UR.js.map
+│                           chunk-TGSTDSQR.js
+│                           chunk-TGSTDSQR.js.map
+│                           chunk-U43ZDB6Y.js
+│                           chunk-U43ZDB6Y.js.map
+│                           chunk-W3LQWAEF.js
+│                           chunk-W3LQWAEF.js.map
+│                           chunk-XM773GIQ.js
+│                           chunk-XM773GIQ.js.map
+│                           chunk-XPWFNWBR.js
+│                           chunk-XPWFNWBR.js.map
+│                           package.json
+│                           primeng_api.js
+│                           primeng_api.js.map
+│                           primeng_bind.js
+│                           primeng_bind.js.map
+│                           primeng_button.js
+│                           primeng_button.js.map
+│                           primeng_chart.js
+│                           primeng_chart.js.map
+│                           primeng_config.js
+│                           primeng_config.js.map
+│                           primeng_dialog.js
+│                           primeng_dialog.js.map
+│                           primeng_inputtext.js
+│                           primeng_inputtext.js.map
+│                           primeng_password.js
+│                           primeng_password.js.map
+│                           primeng_ripple.js
+│                           primeng_ripple.js.map
+│                           primeng_scroller.js
+│                           primeng_scroller.js.map
+│                           primeng_select.js
+│                           primeng_select.js.map
+│                           primeng_selectbutton.js
+│                           primeng_selectbutton.js.map
+│                           primeng_styleclass.js
+│                           primeng_styleclass.js.map
+│                           primeng_table.js
+│                           primeng_table.js.map
+│                           primeng_toast.js
+│                           primeng_toast.js.map
+│                           primeng_tooltip.js
+│                           primeng_tooltip.js.map
+│                           rxjs.js
+│                           rxjs.js.map
+│                           rxjs_operators.js
+│                           rxjs_operators.js.map
+│                           _metadata.json
+│                           
+├───.idea
+│   │   .gitignore
+│   │   modules.xml
+│   │   Titulacion.iml
+│   │   
+│   └───inspectionProfiles
+│           Project_Default.xml
+│           
+├───public
+│   └───demo
+│       └───images
+│           ├───flag
+│           │       flag_placeholder.png
+│           │       
+│           ├───galleria
+│           │       galleria1.jpg
+│           │       galleria10.jpg
+│           │       galleria10s.jpg
+│           │       galleria11.jpg
+│           │       galleria11s.jpg
+│           │       galleria12.jpg
+│           │       galleria12s.jpg
+│           │       galleria13.jpg
+│           │       galleria13s.jpg
+│           │       galleria14.jpg
+│           │       galleria14s.jpg
+│           │       galleria15.jpg
+│           │       galleria15s.jpg
+│           │       galleria1s.jpg
+│           │       galleria2.jpg
+│           │       galleria2s.jpg
+│           │       galleria3.jpg
+│           │       galleria3s.jpg
+│           │       galleria4.jpg
+│           │       galleria4s.jpg
+│           │       galleria5.jpg
+│           │       galleria5s.jpg
+│           │       galleria6.jpg
+│           │       galleria6s.jpg
+│           │       galleria7.jpg
+│           │       galleria7s.jpg
+│           │       galleria8.jpg
+│           │       galleria8s.jpg
+│           │       galleria9.jpg
+│           │       galleria9s.jpg
+│           │       
+│           └───product
+│                   bamboo-watch.jpg
+│                   black-watch.jpg
+│                   blue-band.jpg
+│                   blue-t-shirt.jpg
+│                   bracelet.jpg
+│                   brown-purse.jpg
+│                   chakra-bracelet.jpg
+│                   galaxy-earrings.jpg
+│                   game-controller.jpg
+│                   gaming-set.jpg
+│                   gold-phone-case.jpg
+│                   green-earbuds.jpg
+│                   green-t-shirt.jpg
+│                   grey-t-shirt.jpg
+│                   headphones.jpg
+│                   light-green-t-shirt.jpg
+│                   lime-band.jpg
+│                   mini-speakers.jpg
+│                   painted-phone-case.jpg
+│                   pink-band.jpg
+│                   pink-purse.jpg
+│                   product-placeholder.svg
+│                   purple-band.jpg
+│                   purple-gemstone-necklace.jpg
+│                   purple-t-shirt.jpg
+│                   shoes.jpg
+│                   sneakers.jpg
+│                   teal-t-shirt.jpg
+│                   yellow-earbuds.jpg
+│                   yoga-mat.jpg
+│                   yoga-set.jpg
+│                   
+└───src
+    │   app.component.ts
+    │   app.config.ts
+    │   app.routes.ts
+    │   index.html
+    │   main.ts
+    │   my-routes.ts
+    │   
+    ├───app
+    │   ├───layout
+    │   │   ├───component
+    │   │   │       app.configurator.ts
+    │   │   │       app.floatingconfigurator.ts
+    │   │   │       app.footer.ts
+    │   │   │       app.layout.ts
+    │   │   │       app.menu.ts
+    │   │   │       app.menuitem.ts
+    │   │   │       app.sidebar.ts
+    │   │   │       app.topbar.ts
+    │   │   │       
+    │   │   └───service
+    │   │           layout.service.ts
+    │   │           
+    │   ├───pages
+    │   │   │   pages.routes.ts
+    │   │   │   
+    │   │   ├───admin
+    │   │   │   │   admin.routes.ts
+    │   │   │   │   index.ts
+    │   │   │   │   
+    │   │   │   ├───components
+    │   │   │   │   ├───enrollment-capacity-form
+    │   │   │   │   │       enrollment-capacity-form.html
+    │   │   │   │   │       enrollment-capacity-form.ts
+    │   │   │   │   │       
+    │   │   │   │   ├───enrollment-capacity-list
+    │   │   │   │   │       enrollment-capacity-list.html
+    │   │   │   │   │       enrollment-capacity-list.ts
+    │   │   │   │   │       
+    │   │   │   │   ├───otro-form
+    │   │   │   │   │       otro-form.html
+    │   │   │   │   │       otro-form.ts
+    │   │   │   │   │       
+    │   │   │   │   ├───user-form
+    │   │   │   │   │       user-form.html
+    │   │   │   │   │       user-form.ts
+    │   │   │   │   │       
+    │   │   │   │   └───user-list
+    │   │   │   │           user-list.html
+    │   │   │   │           user-list.ts
+    │   │   │   │           
+    │   │   │   ├───services
+    │   │   │   │       enrollment-capacity-http.service.ts
+    │   │   │   │       form-registry.service.ts
+    │   │   │   │       form-state.service.ts
+    │   │   │   │       role-http.service.ts
+    │   │   │   │       user-http.service.ts
+    │   │   │   │       
+    │   │   │   └───work-flows
+    │   │   │       ├───enrollment-capacity
+    │   │   │       │       enrollment-capacity.state.ts
+    │   │   │       │       enrollment-capacity.store.ts
+    │   │   │       │       
+    │   │   │       └───user-registration
+    │   │   │               user-registration.state.ts
+    │   │   │               user-registration.store.ts
+    │   │   │               
+    │   │   └───auth
+    │   │           access.ts
+    │   │           auth.routes.ts
+    │   │           error.ts
+    │   │           login.ts
+    │   │           
+    │   └───utils
+    │       ├───components
+    │       │   ├───button-action
+    │       │   │       button-action.component.html
+    │       │   │       button-action.component.scss
+    │       │   │       button-action.component.ts
+    │       │   │       consts.ts
+    │       │   │       
+    │       │   ├───list
+    │       │   │       list.component.html
+    │       │   │       list.component.scss
+    │       │   │       list.component.ts
+    │       │   │       
+    │       │   ├───list-basic
+    │       │   │       list-basic.component.html
+    │       │   │       list-basic.component.scss
+    │       │   │       list-basic.component.ts
+    │       │   │       
+    │       │   ├───map
+    │       │   │       map.component.html
+    │       │   │       map.component.scss
+    │       │   │       map.component.ts
+    │       │   │       
+    │       │   ├───message-modal
+    │       │   │       message-modal.component.html
+    │       │   │       message-modal.component.ts
+    │       │   │       
+    │       │   ├───message-processing
+    │       │   │       message-processing.component.html
+    │       │   │       message-processing.component.ts
+    │       │   │       
+    │       │   ├───skeleton
+    │       │   │       skeleton.component.html
+    │       │   │       skeleton.component.ts
+    │       │   │       
+    │       │   ├───toggle-switch
+    │       │   │       toggle-switch.component.ts
+    │       │   │       
+    │       │   └───transactional-code
+    │       │           transactional-code.component.ts
+    │       │           
+    │       ├───directives
+    │       │       error-message.directive.ts
+    │       │       label.directive.ts
+    │       │       
+    │       ├───enums
+    │       │       button-actions.enum.ts
+    │       │       catalogue.enum.ts
+    │       │       core.enum.ts
+    │       │       index.ts
+    │       │       role.enum.ts
+    │       │       
+    │       ├───exceptions
+    │       │       handle-error.ts
+    │       │       
+    │       ├───form-validators
+    │       │       custom-validator.ts
+    │       │       
+    │       ├───helpers
+    │       │       collect-form-errors.helper.ts
+    │       │       file.helper.ts
+    │       │       formats.helper.ts
+    │       │       password-generate.helper.ts
+    │       │       
+    │       ├───interfaces
+    │       │       catalogue.interface.ts
+    │       │       col.interface.ts
+    │       │       dpa.interface.ts
+    │       │       file.interface.ts
+    │       │       form-error.interface.ts
+    │       │       index.ts
+    │       │       paginator.interface.ts
+    │       │       
+    │       ├───pipes
+    │       │       appointments-status-color.pipe.ts
+    │       │       appointments-status.pipe.ts
+    │       │       date-long.pipe.ts
+    │       │       index.ts
+    │       │       
+    │       └───services
+    │               catalogue-http.service.ts
+    │               catalogue.service.ts
+    │               core-session-storage.service.ts
+    │               core.service.ts
+    │               custom-message.service.ts
+    │               dpa-http.service.ts
+    │               dpa.service.ts
+    │               favicon.service.ts
+    │               file-http.service.ts
+    │               index.ts
+    │               
+    ├───assets
+    │   │   styles.scss
+    │   │   tailwind.css
+    │   │   
+    │   ├───demo
+    │   │   │   code.scss
+    │   │   │   demo.scss
+    │   │   │   
+    │   │   └───flags
+    │   │           flags.css
+    │   │           
+    │   └───layout
+    │       │   layout.scss
+    │       │   _core.scss
+    │       │   _footer.scss
+    │       │   _main.scss
+    │       │   _menu.scss
+    │       │   _mixins.scss
+    │       │   _preloading.scss
+    │       │   _responsive.scss
+    │       │   _topbar.scss
+    │       │   _typography.scss
+    │       │   _utils.scss
+    │       │   
+    │       └───variables
+    │               _common.scss
+    │               _dark.scss
+    │               _light.scss
+    │               
+    └───environments
+            environment.prod.ts
+            environment.qa.ts
+            environment.ts
+            
+PS C:\Users\minda\Desktop\Yec2\Proyecto-YEC\titulacion> 
+
+
+<div style="padding: 24px; background-color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-height: 100vh;">
+    
+    <div style="background: #ffffff; padding: 20px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; margin-bottom: 24px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center;">
+        <div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; gap: 6px;">
+            <label style="font-weight: 700; font-size: 13px; color: #475569; text-transform: uppercase; letter-spacing: 0.5px;">Carrera / Programa de Idiomas</label>
+            <p-select 
+                [options]="careers()" 
+                optionLabel="name" 
+                optionValue="id" 
+                [ngModel]="carreraSeleccionadaId()"
+                (onChange)="carreraSeleccionadaId.set($event.value)"
+                placeholder="Seleccione la Carrera"
+                styleClass="w-full">
+            </p-select>
+        </div>
+
+        <div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; gap: 6px;">
+            <label style="font-weight: 700; font-size: 13px; color: #475569; text-transform: uppercase; letter-spacing: 0.5px;">Periodo Académico Lectivo</label>
+            <p-select 
+                [options]="schoolPeriods()" 
+                optionLabel="name" 
+                optionValue="id" 
+                [ngModel]="periodoLectivoId()"
+                (onChange)="periodoLectivoId.set($event.value)"
+                placeholder="Seleccione el Periodo"
+                styleClass="w-full">
+            </p-select>
+        </div>
+    </div>
+
+    <div style="display: flex; gap: 16px; flex-direction: row; flex-wrap: wrap; margin-bottom: 24px; width: 100%;">
+        @for (nivel of academicPeriods(); track nivel.id) {
+            <div 
+                (click)="seleccionarNivel(nivel.id)"
+                [style.background-color]="nivelSeleccionadoId() === nivel.id ? '#eff6ff' : '#ffffff'"
+                [style.border-color]="nivelSeleccionadoId() === nivel.id ? '#3b82f6' : '#cbd5e1'"
+                style="flex: 1; min-width: 180px; max-width: 260px; padding: 14px 18px; border-radius: 12px; border-width: 2px; border-style: solid; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: all 0.2s ease; user-select: none;">
+                
+                <div style="display: flex; flex-direction: column; gap: 2px;">
+                    <span style="font-size: 11px; font-weight: 600; color: #64748b; text-transform: uppercase;">Nivel</span>
+                    <span style="font-size: 18px; font-weight: 700; color: #0f172a;">{{ nivel.name }}</span>
+                </div>
+                <div [style.color]="nivelSeleccionadoId() === nivel.id ? '#3b82f6' : '#94a3b8'">
+                    <i class="pi pi-clone" style="font-size: 16px;"></i>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div style="display: flex; gap: 24px; flex-wrap: wrap; width: 100%;">
+        
+        <div style="flex: 2; min-width: 450px; background: #ffffff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
+            <h3 style="color: #0f172a; margin: 0 0 24px 0; font-size: 18px; font-weight: 700;">
+                Distribución de Horarios y Disponibilidad - <span style="color:#2563eb;">{{ nombreNivelActivo() }}</span>
+            </h3>
+
+            <div style="display: flex; flex-direction: column; gap: 28px;">
+                @for (fila of matrizJornadas(); track fila.jornadaId) {
+                    <div style="background-color: #f8fafc; padding: 18px; border-radius: 12px; border: 1px solid #f1f5f9;">
+                        <span style="font-weight: 800; font-size: 15px; color: #1e293b; display: block; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; border-left: 4px solid #3b82f6; padding-left: 8px;">
+                            Jornada {{ fila.jornadaNombre }}
+                        </span>
+                        
+                        @if (fila.bloquesHorarios.length === 0) {
+                            <span style="font-size: 13px; color: #94a3b8; font-style: italic; display: block; padding: 4px 0;">No hay paralelos u oferta planificada en esta jornada.</span>
+                        }
+
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                            @for (bloque of fila.bloquesHorarios; track bloque.horarioNombre) {
+                                <div style="background: #ffffff; padding: 12px; border-radius: 8px; border: 1px dashed #e2e8f0;">
+                                    <div style="font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                                        <i class="pi pi-clock" style="font-size: 11px;"></i> Bloque: {{ bloque.horarioNombre }}
+                                    </div>
+                                    
+                                    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                                        @for (celda of bloque.celdas; track celda.id) {
+                                            <div 
+                                                (click)="abrirEdicionCupo(celda)"
+                                                [style.background-color]="celda.colorSemaforo === 'verde' ? '#f0fdf4' : celda.colorSemaforo === 'naranja' ? '#fff7ed' : '#fef2f2'"
+                                                [style.border-color]="celda.colorSemaforo === 'verde' ? '#22c55e' : celda.colorSemaforo === 'naranja' ? '#f97316' : '#ef4444'"
+                                                style="border-width: 1px; border-style: solid; border-radius: 8px; padding: 10px; min-width: 135px; flex: 1; max-width: 180px; cursor: pointer; display: flex; flex-direction: column; gap: 2px; transition: transform 0.2s ease;">
+                                                
+                                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                    <span style="font-weight: 700; color: #0f172a; font-size: 14px;">{{ celda.paralelo }}</span>
+                                                    <span 
+                                                        [style.background-color]="celda.colorSemaforo === 'verde' ? '#22c55e' : celda.colorSemaforo === 'naranja' ? '#f97316' : '#ef4444'"
+                                                        style="width: 7px; height: 7px; border-radius: 50%;">
+                                                    </span>
+                                                </div>
+                                                <div style="margin-top: 4px; font-size: 12px; color: #475569; font-weight: 500;">
+                                                    Inscritos: <strong style="color: #0f172a;">{{ celda.estudiantesContados }}</strong> / {{ celda.cupoMaximo }}
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 24px;">
+            <div style="background: #ffffff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">
+                <h3 style="color: #0f172a; margin: 0 0 16px 0; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b;">
+                    Métricas del Nivel
+                </h3>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed #e2e8f0; padding-bottom: 8px;">
+                        <span style="color: #475569; font-weight: 500;">Cupos Asignados:</span>
+                        <span style="font-weight: 700; color: #2563eb;">{{ totalCuposNivel() }}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed #e2e8f0; padding-bottom: 8px;">
+                        <span style="color: #475569; font-weight: 500;">Estudiantes Ocupando:</span>
+                        <span style="font-weight: 700; color: #f97316;">{{ totalOcupadosNivel() }}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding-bottom: 4px;">
+                        <span style="color: #475569; font-weight: 500;">Disponibilidad:</span>
+                        <span style="font-weight: 700; color: #22c55e;">{{ totalDisponiblesNivel() }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #ffffff; padding: 24px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; display: flex; justify-content: center; align-items: center; position: relative; height: 240px;">
+                <p-chart type="doughnut" [data]="chartData()" [options]="chartOptions()" styleClass="w-full h-full"></p-chart>
+                <div style="position: absolute; display: flex; flex-direction: column; align-items: center; text-align: center; pointer-events: none;">
+                    <span style="font-size: 32px; font-weight: 900; color: #0f172a;">{{ porcentajeOcupacionGlobal() }}%</span>
+                    <span style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Ocupado</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p-dialog 
+        header="Gestión de Cupos del Paralelo" 
+        [(visible)]="mostrarModalCrud" 
+        [modal]="true" 
+        [style]="{ width: '420px' }" 
+        [resizable]="false"
+        [draggable]="false">
+        
+        @if (celdaSeleccionada()) {
+            <div style="display: flex; flex-direction: column; gap: 16px; padding-top: 8px;">
+                <div style="background-color: #f1f5f9; padding: 12px; border-radius: 8px;">
+                    <span style="display: block; font-size: 12px; color: #475569; font-weight: 600;">CONFIGURACIÓN DEL CURSO:</span>
+                    <strong style="font-size: 16px; color: #0f172a;">{{ celdaSeleccionada()?.paralelo }} - {{ celdaSeleccionada()?.horario }}</strong>
+                    <span style="display: block; font-size: 13px; color: #64748b; margin-top: 4px;">Alumnos Inscritos actualmente: {{ celdaSeleccionada()?.estudiantesContados }}</span>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <label style="font-weight: 700; font-size: 13px; color: #334155;">Capacidad Máxima (Cupos)</label>
+                    <input 
+                        pInputText 
+                        type="number" 
+                        [ngModel]="cupoEdicionInput()"
+                        (ngModelChange)="cupoEdicionInput.set($event)"
+                        style="width: 100%; font-size: 16px; font-weight: 600; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px;" />
+                </div>
+
+                <div style="display: flex; justify-content: space-between; gap: 12px; margin-top: 12px;">
+                    <p-button 
+                        label="Borrar Cupo" 
+                        icon="pi pi-trash" 
+                        severity="danger" 
+                        [disabled]="celdaSeleccionada()!.estudiantesContados > 0"
+                        (onClick)="eliminarCupoExistente()">
+                    </p-button>
+
+                    <div style="display: flex; gap: 8px;">
+                        <p-button 
+                            label="Cancelar" 
+                            severity="secondary" 
+                            (onClick)="mostrarModalCrud.set(false)">
+                        </p-button>
+                        <p-button 
+                            label="Guardar" 
+                            icon="pi pi-check" 
+                            severity="success" 
+                            (onClick)="guardarCupoModificado()">
+                        </p-button>
+                    </div>
+                </div>
+            </div>
+        }
+    </p-dialog>
+
+</div> 
+
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+// --- IMPORTACIONES DE PRIMENG ---
+import { SelectModule } from 'primeng/select';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { ChartModule } from 'primeng/chart';
+
+// --- INTERFACES DE CONTROL VISUAL ---
+export interface CeldaHorarioInterface {
+  id: string;
+  horario: string;
+  paralelo: string;
+  cupoMaximo: number;
+  estudiantesContados: number;
+  colorSemaforo: 'verde' | 'naranja' | 'rojo';
+}
+
+export interface BloqueHorarioInterface {
+  horarioNombre: string;
+  celdas: CeldaHorarioInterface[];
+}
+
+export interface FilaJornadaInterface {
+  jornadaId: string;
+  jornadaNombre: string;
+  bloquesHorarios: BloqueHorarioInterface[];
+}
+
+@Component({
+  selector: 'app-enrollment-capacity-form',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    SelectModule,
+    ButtonModule,
+    DialogModule,
+    InputTextModule,
+    ChartModule
+  ],
+  templateUrl: './enrollment-capacity-form.html'
+})
+export class EnrollmentCapacityFormComponent implements OnInit {
+  
+  // --- DICCIONARIOS ESTÁTICOS DE ORDENAMIENTO INMUTABLE (CARPINTERÍA FINA) ---
+  private readonly PRIORIDAD_NIVELES: Record<string, number> = {
+    'Nivel A1.2': 1,
+    'Nivel A2.2': 2,
+    'Nivel B1.2': 3,
+    'Nivel B2.2': 4
+  };
+
+  private readonly PRIORIDAD_JORNADAS: Record<string, number> = {
+    'Matutina': 1,
+    'Vespertina': 2,
+    'Nocturna': 3
+  };
+
+  // --- SIGNALS DE ESTADO LOCAL ---
+  readonly carreraSeleccionadaId = signal<string | null>(null);
+  readonly periodoLectivoId = signal<string | null>(null);
+  readonly nivelSeleccionadoId = signal<string | null>(null);
+
+  // Mocks/Data general mapeada desde tu servicio
+  readonly careers = signal<any[]>([]);
+  readonly schoolPeriods = signal<any[]>([]);
+  
+  // Cache de datos crudos directo de la Base de Datos
+  readonly todosLosNivelesRaw = signal<any[]>([]);
+  readonly todosLosCuposRaw = signal<any[]>([]);
+
+  // Control del Modal CRUD
+  readonly mostrarModalCrud = signal<boolean>(false);
+  readonly celdaSeleccionada = signal<CeldaHorarioInterface | null>(null);
+  readonly cupoEdicionInput = signal<number>(0);
+
+  // --- SIGNALS COMPUTADOS ORDENADOS Y ESTÁTICOS ---
+
+  // 1. Niveles ordenados fijamente: A1.2 -> A2.2 -> B1.2 -> B2.2
+  readonly academicPeriods = computed<any[]>(() => {
+    const listaOriginal = this.todosLosNivelesRaw() || [];
+    return [...listaOriginal].sort((a, b) => {
+      const pesoA = this.PRIORIDAD_NIVELES[a.name] || 99;
+      const pesoB = this.PRIORIDAD_NIVELES[b.name] || 99;
+      return pesoA - pesoB;
+    });
+  });
+
+  // Nombre del nivel activo para el título de la matriz
+  readonly nombreNivelActivo = computed<string>(() => {
+    const activo = this.academicPeriods().find(n => n.id === this.nivelSeleccionadoId());
+    return activo ? activo.name : 'Seleccione un Nivel';
+  });
+
+  // 2. Jornadas únicas ordenadas fijamente: Matutinas -> Vespertinas -> Nocturnas
+  readonly workdays = computed<any[]>(() => {
+    const data = this.todosLosCuposRaw();
+    const carreraId = this.carreraSeleccionadaId();
+    const periodoId = this.periodoLectivoId();
+    const nivelId = this.nivelSeleccionadoId();
+
+    const jornadasMap = new Map();
+    data.forEach(item => {
+      if (item.schoolPeriod?.id === periodoId && item.career?.id === carreraId && item.academicPeriod?.id === nivelId && item.workday) {
+        jornadasMap.set(item.workday.id, item.workday);
+      }
+    });
+
+    return Array.from(jornadasMap.values()).sort((a, b) => {
+      const nombreA = a.name.split(' ')[0];
+      const nombreB = b.name.split(' ')[0];
+
+      const pesoA = this.PRIORIDAD_JORNADAS[nombreA] || 99;
+      const pesoB = this.PRIORIDAD_JORNADAS[nombreB] || 99;
+
+      if (pesoA === pesoB) {
+        return a.name.localeCompare(b.name); // Desempate alfabético interno por horas
+      }
+      return pesoA - pesoB;
+    });
+  });
+
+  // 3. Matriz estructural limpia blindada contra desordenamiento del backend
+  readonly matrizJornadas = computed<FilaJornadaInterface[]>(() => {
+    const dataRaw = this.todosLosCuposRaw();
+    const careerId = this.carreraSeleccionadaId();
+    const periodId = this.periodoLectivoId();
+    const levelId = this.nivelSeleccionadoId();
+    const listaJornadasOrdered = this.workdays();
+
+    const filtrados = dataRaw.filter(item => 
+        item.career?.id === careerId &&
+        item.schoolPeriod?.id === periodId &&
+        item.academicPeriod?.id === levelId
+    );
+
+    return listaJornadasOrdered.map(jornada => {
+        const registrosDeEstaJornada = filtrados.filter(f => f.workday?.id === jornada.id);
+        
+        const celdas: CeldaHorarioInterface[] = registrosDeEstaJornada.map(reg => {
+            const max = reg.capacity || 0;
+            const ocupados = reg.studentsCount || reg.enrolledStudents || 0;
+            const porcentaje = max > 0 ? (ocupados / max) * 100 : 0;
+            
+            let semaforo: 'verde' | 'naranja' | 'rojo' = 'verde';
+            if (porcentaje >= 100) semaforo = 'rojo';
+            else if (porcentaje >= 80) semaforo = 'naranja';
+
+            return {
+                id: reg.id,
+                horario: reg.workday?.name || jornada.name, 
+                paralelo: reg.parallel?.name || 'Sin Nombre',
+                cupoMaximo: max,
+                estudiantesContados: ocupados,
+                colorSemaforo: semaforo
+            };
+        });
+
+        // Garantizar de forma estricta que los paralelos mantengan orden A, B, C, D al actualizar
+        celdas.sort((a, b) => a.paralelo.localeCompare(b.paralelo));
+
+        return {
+            jornadaId: jornada.id,
+            jornadaNombre: jornada.name,
+            bloquesHorarios: [{
+                horarioNombre: jornada.name,
+                celdas: celdas
+            }]
+        };
+    });
+  });
+
+  // --- COMPUTADOS PARA MÉTRICAS Y GRÁFICO (DOUGHNUT) ---
+  readonly totalCuposNivel = computed(() => {
+    return this.matrizJornadas().reduce((sum, fila) => 
+      sum + fila.bloquesHorarios[0].celdas.reduce((cSum, c) => cSum + c.cupoMaximo, 0), 0
+    );
+  });
+
+  readonly totalOcupadosNivel = computed(() => {
+    return this.matrizJornadas().reduce((sum, fila) => 
+      sum + fila.bloquesHorarios[0].celdas.reduce((cSum, c) => cSum + c.estudiantesContados, 0), 0
+    );
+  });
+
+  readonly totalDisponiblesNivel = computed(() => {
+    const res = this.totalCuposNivel() - this.totalOcupadosNivel();
+    return res < 0 ? 0 : res;
+  });
+
+  readonly porcentajeOcupacionGlobal = computed(() => {
+    const total = this.totalCuposNivel();
+    if (total === 0) return 0;
+    return Math.round((this.totalOcupadosNivel() / total) * 100);
+  });
+
+  readonly chartData = computed(() => {
+    return {
+      labels: ['Ocupado', 'Disponible'],
+      datasets: [
+        {
+          data: [this.totalOcupadosNivel(), this.totalDisponiblesNivel()],
+          backgroundColor: ['#f97316', '#22c55e'],
+          hoverBackgroundColor: ['#ea580c', '#16a34a'],
+          borderWidth: 0
+        }
+      ]
+    };
+  });
+
+  readonly chartOptions = signal({
+    cutout: '78%',
+    plugins: {
+      legend: { display: false },
+      tooltip: { enabled: true }
+    }
+  });
+
+  // --- LÓGICA DE INICIALIZACIÓN ---
+  ngOnInit(): void {
+    this.cargarDatosSimulados();
+  }
+
+  private cargarDatosSimulados(): void {
+    // Aquí mandas a llamar tus servicios reales HTTP de backend
+    this.careers.set([{ id: 'c1', name: 'Pedagogía de los Idiomas Nacionales y Extranjeros' }]);
+    this.schoolPeriods.set([
+      { id: 'p1', name: 'Período 2026-1' },
+      { id: 'p2', name: 'Periodo 2027-1' }
+    ]);
+    this.todosLosNivelesRaw.set([
+      { id: 'n2', name: 'Nivel A2.2' },
+      { id: 'n4', name: 'Nivel B2.2' },
+      { id: 'n1', name: 'Nivel A1.2' },
+      { id: 'n3', name: 'Nivel B1.2' }
+    ]);
+
+    // Selección por defecto
+    this.carreraSeleccionadaId.set('c1');
+    this.periodoLectivoId.set('p1');
+    
+    // Al setear el primer nivel ordenado
+    if (this.academicPeriods().length > 0) {
+      this.nivelSeleccionadoId.set(this.academicPeriods()[0].id);
+    }
+
+    // Datos simulados de la base de datos (Ejemplo inicial para pruebas)
+    this.simularCuposBaseDeDatos();
+  }
+
+  seleccionarNivel(id: string): void {
+    this.nivelSeleccionadoId.set(id);
+  }
+
+  // --- MOCK CRUD CONTROL (GUARDADO INMUTABLE) ---
+  abrirEdicionCupo(celda: CeldaHorarioInterface): void {
+    this.celdaSeleccionada.set(celda);
+    this.cupoEdicionInput.set(celda.cupoMaximo);
+    this.mostrarModalCrud.set(true);
+  }
+
+  guardarCupoModificado(): void {
+    const celda = this.celdaSeleccionada();
+    if (celda) {
+      // Modificamos el valor directamente en el array crudo simulación de backend
+      const copiaRaw = [...this.todosLosCuposRaw()];
+      const indice = copiaRaw.findIndex(item => item.id === celda.id);
+      
+      if (indice !== -1) {
+        copiaRaw[indice].capacity = this.cupoEdicionInput();
+        this.todosLosCuposRaw.set(copiaRaw); // Se dispara el computed manteniendo el .sort estricto
+      }
+    }
+    this.mostrarModalCrud.set(false);
+  }
+
+  eliminarCupoExistente(): void {
+    const celda = this.celdaSeleccionada();
+    if (celda && celda.estudiantesContados === 0) {
+      const filtrados = this.todosLosCuposRaw().filter(item => item.id !== celda.id);
+      this.todosLosCuposRaw.set(filtrados);
+    }
+    this.mostrarModalCrud.set(false);
+  }
+
+  private simularCuposBaseDeDatos(): void {
+    // Generador masivo simulado que replica la estructura exacta de tus catálogos de Postgres
+    const mockList: any[] = [];
+    const jornadasConfig = [
+      { id: 'j1', name: 'Matutina (07:00 - 09:00)' },
+      { id: 'j2', name: 'Matutina (10:00 - 12:00)' },
+      { id: 'j3', name: 'Vespertina (13:00 - 15:00)' },
+      { id: 'j4', name: 'Vespertina (15:00 - 17:00)' },
+      { id: 'j5', name: 'Nocturna (17:00 - 19:00)' },
+      { id: 'j6', name: 'Nocturna (19:00 - 21:00)' }
+    ];
+    const paralelosConfig = [
+      { id: 'pa', name: 'Paralelo A' },
+      { id: 'pb', name: 'Paralelo B' },
+      { id: 'pc', name: 'Paralelo C' },
+      { id: 'pd', name: 'Paralelo D' }
+    ];
+
+    let idCounter = 1;
+
+    this.schoolPeriods().forEach(per => {
+      this.todosLosNivelesRaw().forEach(niv => {
+        jornadasConfig.forEach(jor => {
+          paralelosConfig.forEach(par => {
+            mockList.push({
+              id: `cp-${idCounter++}`,
+              schoolPeriod: { id: per.id },
+              career: { id: 'c1' },
+              academicPeriod: { id: niv.id },
+              parallel: par,
+              workday: jor,
+              capacity: 40,
+              studentsCount: Math.floor(Math.random() * 38) // Simulación de alumnos dinámicos
+            });
+          });
+        });
+      });
+    });
+
+    this.todosLosCuposRaw.set(mockList);
+  }
+} 
+
+
+<p-toast></p-toast>
+
+<div class="flex flex-col gap-4">
+
+    <div class="flex justify-between items-center">
+
+        <h2 class="text-2xl font-semibold">
+
+            Administración de Cupos
+
+        </h2>
+
+        <p-button
+
+            label="Nuevo Cupo"
+
+            icon="pi pi-plus"
+
+            severity="success"  
+
+            (onClick)="create()">
+
+        </p-button>
+
+    </div>
+
+    <p-table
+
+        [value]="data()"
+
+        [loading]="loading()"
+
+        styleClass="p-datatable-sm">
+
+        <ng-template pTemplate="header">
+
+            <tr>
+
+                <th>Periodo Académico</th>
+
+                <th>Carrera</th>
+
+                <th>Paralelo</th>
+
+                <th>Horario</th>
+
+                <th>Periodo Lectivo</th>
+
+                <th>Capacidad</th>
+
+                <th style="width: 150px">
+                    Acciones
+                </th>
+
+            </tr>
+
+        </ng-template>
+
+        <ng-template pTemplate="body" let-item>
+
+            <tr>
+
+                <td>
+
+                    {{ item.academicPeriod?.name ?? '-' }}
+
+                </td>
+
+                <td>
+
+                    {{ item.career?.name ?? '-' }}
+
+                </td>
+
+                <td>
+
+                    {{ item.parallel?.name ?? '-' }}
+
+                </td>
+
+                <td>
+
+                    {{ item.workday?.name ?? '-' }}
+
+                </td>
+
+                <td>
+
+                    {{ item.schoolPeriod?.name ?? '-' }}
+
+                </td>
+
+                <td>
+
+                    <strong>
+
+                        {{ item.capacity }}
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    <div class="flex gap-2">
+
+                        
+
+                       <p-button
+
+icon="pi pi-trash"
+
+severity="danger"
+
+size="small"
+
+(onClick)="remove(item);$event.stopPropagation()"
+
+pTooltip="Eliminar">
+
+</p-button>
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7" class="text-center text-gray-500 py-4">
+                    No existen cupos registrados en el sistema.
+                </td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+
+</div> 
+
+
+
+import {Component, inject, OnInit, signal} from '@angular/core';
+import {Router} from '@angular/router';
+
+import {MessageService} from 'primeng/api';
+import {Button} from 'primeng/button';
+import {TableModule} from 'primeng/table';
+import {ToastModule} from 'primeng/toast';
+import {TooltipModule} from 'primeng/tooltip';
+
+import {EnrollmentCapacityHttpService} from '../../services/enrollment-capacity-http.service';
+
+@Component({
+    selector: 'app-enrollment-capacity-list',
+
+    standalone: true,
+
+    imports: [
+        TableModule,
+        Button,
+        ToastModule,
+        TooltipModule,
+    ],
+
+    providers: [
+        MessageService,
+    ],
+
+    templateUrl: './enrollment-capacity-list.html',
+})
+export class EnrollmentCapacityList implements OnInit {
+
+    private readonly service =
+        inject(EnrollmentCapacityHttpService);
+
+    private readonly router =
+        inject(Router);
+
+    private readonly messageService =
+        inject(MessageService);
+
+    protected data =
+        signal<any[]>([]);
+
+    protected loading =
+        signal(false);
+
+    ngOnInit(): void {
+        this.loadData();
+    }
+
+    loadData(): void {
+
+        this.loading.set(true);
+
+        this.service.findAll().subscribe({
+
+            next: (response: any) => {
+
+                this.data.set(
+                    response.data ?? response
+                );
+
+                this.loading.set(false);
+
+            },
+
+            error: () => {
+
+                this.loading.set(false);
+
+                this.messageService.add({
+
+                    severity: 'error',
+
+                    summary: 'Error',
+
+                    detail: 'No fue posible cargar los registros.',
+
+                    life: 4000,
+
+                });
+
+            },
+
+        });
+
+    }
+
+   create(): void {
+    this.router.navigate([
+        '/main/admin/enrollment-capacity/form'
+    ]);
+}
+
+  edit(id: string): void {
+    this.router.navigate([
+        '/main/admin/enrollment-capacity/form',
+        id,
+    ]);
+}
+
+ remove(item: any): void {
+
+    if (!confirm('¿Desea eliminar este registro?')) {
+        return;
+    }
+
+    this.service.remove(item.id).subscribe({
+
+        next: () => {
+
+            this.messageService.add({
+
+                severity: 'success',
+
+                summary: 'Correcto',
+
+                detail: 'Registro eliminado.',
+
+            });
+
+            this.loadData();
+
+        },
+
+        error: (err) => {
+
+            this.messageService.add({
+
+                severity: 'warn',
+
+                summary: 'No permitido',
+
+                detail:
+                    err.error.message ??
+                    'Existen estudiantes matriculados.',
+
+            });
+
+        }
+
+    });
+
+}
+}
+
+
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '@env/environment';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class EnrollmentCapacityHttpService {
+  private readonly httpClient = inject(HttpClient);
+
+  // Ruta base oficial unificada para interactuar con la tabla/entidad career-parallels
+  private readonly apiUrl = `${environment.API_URL}/career-parallels`;
+
+  /**
+   * Recupera la lista completa de configuraciones, ofertas y catálogos vinculados
+   */
+  findAll(): Observable<any> {
+    return this.httpClient.get<any>(this.apiUrl);
+  }
+
+  /**
+   * Obtiene el detalle de un registro específico de capacidad por su ID
+   */
+  findOne(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  /**
+   * Envía los datos mapeados para insertar o actualizar la capacidad en la base de datos
+   */
+  create(payload: any): Observable<any> {
+    return this.httpClient.post<any>(this.apiUrl, payload);
+  }
+
+  /**
+   * Actualiza parcialmente un registro existente por su ID único
+   */
+  update(id: string, payload: any): Observable<any> {
+    return this.httpClient.patch<any>(`${this.apiUrl}/${id}`, payload);
+  }
+
+  /**
+   * Elimina una configuración de capacidad/paralelo de la base de datos
+   */
+  remove(id: string): Observable<any> {
+    return this.httpClient.delete<any>(`${this.apiUrl}/${id}`);
+  }
+
+  /**
+   * Consulta la lista o conteo de estudiantes inscritos en este paralelo/capacidad
+   */
+  countStudents(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/${id}/students`);
+  }
+}
+
+export interface EnrollmentCapacityState {
+    configuration: EnrollmentCapacityInfo;
+}
+
+export interface EnrollmentCapacityInfo {
+    academicPeriodId: string | null;
+    careerId: string | null;
+    parallelId: string | null;
+    workdayId: string | null;
+    schoolPeriodId: string | null;
+    capacity: number | null;
+}
+
+export const INITIAL_ENROLLMENT_CAPACITY_STATE: EnrollmentCapacityState = {
+
+    configuration: {
+
+        academicPeriodId: null,
+
+        careerId: null,
+
+        parallelId: null,
+
+        workdayId: null,
+
+        schoolPeriodId: null,
+
+        capacity: null,
+
+    }
+
+};
+
+
+import {computed, Injectable, signal} from '@angular/core';
+
+import {
+
+    EnrollmentCapacityInfo,
+    EnrollmentCapacityState,
+    INITIAL_ENROLLMENT_CAPACITY_STATE
+
+} from './enrollment-capacity.state';
+
+const FORM_STATE_KEY = 'enrollment-capacity';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class EnrollmentCapacityStore {
+
+    readonly formState = signal<EnrollmentCapacityState>(
+        this.loadFromStorage()
+    );
+
+    readonly formErrors =
+        signal<Record<string, string[]>>({});
+
+    readonly configuration =
+        computed(() => this.formState().configuration);
+
+    updateConfiguration(
+        data: Partial<EnrollmentCapacityInfo>
+    ) {
+
+        this.formState.update(state => ({
+
+            ...state,
+
+            configuration: {
+
+                ...state.configuration,
+
+                ...data,
+
+            }
+
+        }));
+
+    }
+
+    private loadFromStorage(): EnrollmentCapacityState {
+
+        const stored =
+            sessionStorage.getItem(FORM_STATE_KEY);
+
+        return stored
+            ? JSON.parse(stored)
+            : INITIAL_ENROLLMENT_CAPACITY_STATE;
+
+    }
+
+}
+
+import { Routes } from '@angular/router';
+import { MY_ROUTES } from '@routes';
+import { UserList, UserForm } from '@adminModule';
+import { OtroForm } from '@/pages/admin/components/otro-form/otro-form';
+import { EnrollmentCapacityList } from '@/pages/admin/components/enrollment-capacity-list/enrollment-capacity-list';
+import { EnrollmentCapacityFormComponent } from './components/enrollment-capacity-form/enrollment-capacity-form';
+export default [
+    
+    {
+        path: MY_ROUTES.adminPages.user.base,
+        title: 'Listado de Usuarios',
+        loadComponent: () => UserList
+    },
+
+    {
+        path: MY_ROUTES.adminPages.user.form.base,
+        title: 'User Form',
+        loadComponent: () => UserForm
+    },
+
+    {
+        path: MY_ROUTES.adminPages.user.otro.base,
+        title: 'Otro',
+        loadComponent: () => OtroForm
+    },
+
+    {
+        path: MY_ROUTES.adminPages.enrollmentCapacity.base,
+        title: 'Administración de Cupos',
+        loadComponent: () => EnrollmentCapacityList
+    },
+
+    {
+        path: MY_ROUTES.adminPages.enrollmentCapacity.form.base,
+        title: 'Crear Cupos',
+        // 🛠️ CORREGIDO: Apunta al nombre correcto de la clase
+        loadComponent: () => EnrollmentCapacityFormComponent
+    },
+
+    {
+        path: MY_ROUTES.adminPages.enrollmentCapacity.edit.base,
+        title: 'Editar Cupos',
+        // 🛠️ CORREGIDO: Apunta al nombre correcto de la clase
+        loadComponent: () => EnrollmentCapacityFormComponent
+    }
+
+] as Routes; 
+
+import {Routes} from '@angular/router';
+import {MY_ROUTES} from "@routes";
+
+export default [
+    {
+        path: MY_ROUTES.adminPages.user.base,
+        title: 'Users',
+        loadChildren: () => import('@/pages/admin/admin.routes')
+    },
+    {path: '**', redirectTo: '/notfound'}
+] as Routes;
+
+
+import {Routes} from '@angular/router';
+import {AppLayout} from '@layout/component/app.layout';
+import {MY_ROUTES} from "@routes";
+
+export const appRoutes: Routes = [
+    {
+        path: MY_ROUTES.main,
+        component: AppLayout,
+        children: [
+            {
+                path: MY_ROUTES.adminPages.base,
+                loadChildren: () => import('./app/pages/admin/admin.routes')
+            }
+        ]
+    },
+    //{path: '**', redirectTo: '/404'}
+];
+
+
+export const MY_ROUTES = {
+    main: 'main',
+    home: '',
+    layout: {
+        base: 'layout'
+    },
+    errorPages: {
+        base: 'errors',
+        unauthorized: {
+            absolute: '/errors/401',
+            base: '401'
+        },
+        forbidden: {
+            absolute: '/errors/403',
+            base: '403'
+        },
+        notFound: {
+            absolute: '/errors/404',
+            base: '404'
+        },
+        unavailable: {
+            absolute: '/errors/503',
+            base: '503'
+        }
+    },
+    corePages: {
+        base: 'core',
+        absolute: '/main/core',
+        shared: {
+            base: 'shared',
+            absolute: '/main/core/shared',
+            simulator: {
+                base: 'simulators',
+                absolute: '/main/core/shared/simulators'
+            }
+        },
+        dac: {
+            base: 'dac',
+            absolute: '/main/core/dac',
+            dashboard: {
+                base: 'dashboard',
+                absolute: '/main/core/dac/dashboard'
+            },
+            simulator: {
+                base: 'simulators',
+                absolute: '/main/core/dac/simulators'
+            },
+            cadastre: {
+                base: 'cadastres',
+                absolute: '/main/core/dac/cadastres'
+            },
+            processLog: {
+                base: 'process-logs',
+                absolute: '/main/core/dac/process-logs'
+            }
+        },
+        specialist: {
+            base: 'specialist',
+            absolute: '/main/core/specialist',
+            dashboard: {
+                base: 'dashboard',
+                absolute: '/main/core/specialist/dashboard'
+            },
+            simulator: {
+                base: 'simulators',
+                absolute: '/main/core/specialist/simulators'
+            },
+            process: {
+                base: 'processes',
+                absolute: '/main/core/specialist/processes'
+            },
+            cadastre: {
+                base: 'cadastres',
+                absolute: '/main/core/specialist/cadastres'
+            },
+            processLog: {
+                base: 'process-logs',
+                absolute: '/main/core/specialist/process-logs'
+            }
+        },
+        gad: {
+            base: 'gad',
+            absolute: '/main/core/gad',
+            dashboard: {
+                base: 'dashboard',
+                absolute: '/main/core/gad/dashboard'
+            },
+            simulator: {
+                base: 'simulators',
+                absolute: '/main/core/gad/simulators'
+            },
+            cadastre: {
+                base: 'cadastres',
+                absolute: '/main/core/gad/cadastres'
+            },
+            processLog: {
+                base: 'process-logs',
+                absolute: '/main/core/gad/process-logs'
+            }
+        },
+        external: {
+            base: 'external',
+            absolute: '/main/core/external',
+            dashboard: {
+                base: 'dashboard',
+                absolute: '/main/core/external/dashboard'
+            },
+            simulator: {
+                base: 'simulators',
+                absolute: '/main/core/external/simulators'
+            },
+            accreditation: {
+                base: 'accreditations',
+                absolute: '/main/core/external/accreditations'
+            },
+            guideAccreditation: {
+                base: 'guide-accreditations',
+                absolute: '/main/core/external/guide-accreditations'
+            },
+            establishment: {
+                base: 'establishments',
+                absolute: '/main/core/external/establishments'
+            },
+            guideEstablishment: {
+                base: 'guide-establishments',
+                absolute: '/main/core/external/guide-establishments'
+            }
+        },
+        technician: {
+            base: 'technician',
+            absolute: '/main/core/technician',
+            dashboard: {
+                base: 'dashboard',
+                absolute: '/main/core/technician/dashboard'
+            },
+            simulator: {
+                base: 'simulators',
+                absolute: '/main/core/technician/simulators'
+            },
+            process: {
+                base: 'processes',
+                absolute: '/main/core/technician/processes'
+            },
+            cadastre: {
+                base: 'cadastres',
+                absolute: '/main/core/technician/cadastres'
+            },
+            processLog: {
+                base: 'process-logs',
+                absolute: '/main/core/technician/process-logs'
+            }
+        }
+    },
+    publicPages: {
+        base: 'public',
+        absolute: '/public',
+        emailVerification: {
+            base: 'email-verifications',
+            absolute: '/public/email-verifications'
+        },
+        simulator: {
+            base: 'simulators',
+            absolute: '/public/simulators'
+        },
+        icons: {
+            base: 'icons',
+            absolute: '/public/icons'
+        },
+        terms: {
+            base: 'terms',
+            absolute: '/public/terms'
+        },
+        passwordChanged: {
+            base: 'password-changed',
+            absolute: '/public/password-changed'
+        },
+        securityQuestions: {
+            base: 'security-questions',
+            absolute: '/public/security-questions'
+        }
+    },
+    authPages: {
+        base: 'auth',
+        dashboard: {
+            base: 'dashboard',
+            absolute: '/auth/dashboard'
+        },
+        signIn: {
+            base: 'sign-in',
+            absolute: '/auth/sign-in'
+        },
+        signUp: {
+            base: 'sign-up',
+            absolute: '/auth/sign-up'
+        },
+        passwordReset: {
+            base: 'password-reset',
+            absolute: '/auth/password-reset'
+        },
+        passwordChanged: {
+            base: 'password-changed',
+            absolute: '/auth/password-changed'
+        },
+        securityQuestions: {
+            base: 'security-questions',
+            absolute: '/auth/security-questions'
+        }
+    },
+   adminPages: {
+    base: 'admin',
+
+    user: {
+        base: 'users',
+        absolute: '/main/admin/users',
+        form: {
+            base: 'users/form',
+            absolute: '/main/admin/users/form'
+        },
+        otro: {
+            base: 'users/otro',
+            absolute: '/main/admin/users/otro'
+        },
+        profile: {
+            base: 'users/profile',
+            absolute: '/main/admin/users/profile'
+        }
+    },
+
+    enrollmentCapacity: {
+        base: 'enrollment-capacity',
+        absolute: '/main/admin/enrollment-capacity',
+
+        form: {
+            base: 'enrollment-capacity/form',
+            absolute: '/main/admin/enrollment-capacity/form'
+        },
+
+        edit: {
+            base: 'enrollment-capacity/form/:id',
+            absolute: '/main/admin/enrollment-capacity/form/:id'
+        }
+    }
+},
+
+    dashboards: {
+        base: 'dashboards',
+        absolute: '/main/dashboards'
+    },
+} as const;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

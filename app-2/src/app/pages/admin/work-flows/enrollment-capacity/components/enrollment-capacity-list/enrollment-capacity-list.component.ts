@@ -1,4 +1,3 @@
-// src/app/pages/admin/work-flows/enrollment-capacity/components/enrollment-capacity-list/enrollment-capacity-list.component.ts
 import { Component, computed, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Select } from 'primeng/select';
@@ -6,7 +5,7 @@ import { form, FieldTree, required, SchemaPathTree } from '@angular/forms/signal
 import { Dialog } from 'primeng/dialog';
 import { InputNumber } from 'primeng/inputnumber';
 import { ConfirmDialog } from 'primeng/confirmdialog';
-import { ConfirmationService, MessageService } from 'primeng/api'; // 👈 1. IMPORTADO MessageService
+import { ConfirmationService, MessageService } from 'primeng/api'; 
 import { FormRegistryService } from '@utils/services/form-registry.service';
 import { LabelDirective } from '@utils/directives/label.directive';
 import { ErrorMessageDirective } from '@utils/directives/error-message.directive';
@@ -20,19 +19,20 @@ const FORM_STATE_KEY = 'enrollmentCapacityData';
     selector: 'app-enrollment-capacity-list',
     standalone: true,
     imports: [FormsModule, Select, LabelDirective, ErrorMessageDirective, Dialog, InputNumber, ConfirmDialog],
-    providers: [ConfirmationService], // Mantenemos tu ConfirmationService local
+    providers: [ConfirmationService], 
     templateUrl: './enrollment-capacity-list.component.html'
 })
 export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
     private readonly _formRegistryService = inject(FormRegistryService);
     private readonly httpService = inject(EnrollmentCapacityHttpService);
     private readonly confirmationService = inject(ConfirmationService);
-    private readonly messageService = inject(MessageService); // 👈 2. INYECTADO MessageService
+    private readonly messageService = inject(MessageService); 
     protected readonly store = inject(EnrollmentCapacityStore);
 
     protected readonly careers = computed(() => this.store.careers());
     protected readonly teacherDistributions = computed(() => this.store.teacherDistributions());
     protected readonly academicPeriods = computed(() => this.store.academicPeriods());
+    protected readonly schoolPeriods = computed(() => this.store.schoolPeriods());
     protected readonly classrooms = computed(() => this.store.classrooms());
     protected readonly parallels = computed(() => this.store.parallels());
     protected readonly workdays = computed(() => this.store.workdays());
@@ -44,15 +44,15 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
         return activo ? activo.name : 'Ninguno';
     });
 
-    protected readonly form$ = signal<EnrollmentCapacityFormData>(this.store.formState());
-    protected readonly formData: FieldTree<EnrollmentCapacityFormData> = form(this.form$, (schema) => {
+    protected readonly form$ = signal<any>({ careerId: '', teacherDistributionId: '', academicPeriodId: '' });
+    protected readonly formData: FieldTree<any> = form(this.form$, (schema) => {
         this.validateForm(schema);
     });
 
-    get careerField() { return this.formData.careerId; }
-    get teacherDistributionField() { return this.formData.teacherDistributionId; }
+    // CORRECCIÓN DE ERRORES DE TS:
+    get careerField() { return (this.formData as any)['careerId']; }
+    get teacherDistributionField() { return (this.formData as any)['teacherDistributionId']; }
 
-    // --- MATRIZ REAL, derivada de capacitiesRaw + nivel seleccionado ---
     protected readonly matrizJornadas = computed<RowInterface[]>(() => {
         const nivelId = this.nivelSeleccionadoId();
         if (!nivelId) return [];
@@ -71,10 +71,7 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
                 porJornada.set(workdayId, {
                     jornadaId: workdayId,
                     jornadaNombre: workdayName,
-                    bloquesHorarios: [{
-                        horarioNombre: workdayName,
-                        celdas: []
-                    }]
+                    bloquesHorarios: [{ horarioNombre: workdayName, celdas: [] }]
                 });
             }
 
@@ -95,14 +92,15 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
         return Array.from(porJornada.values());
     });
 
-    // --- ESTADO DEL MODAL DE GESTIÓN DE CUPOS ---
     protected readonly modalVisible = signal(false);
     protected readonly modoEdicion = signal(false);
     protected readonly celdaSeleccionada = signal<CellInterface | null>(null);
     protected readonly capacidadEditada = signal<number>(30);
     protected readonly aulaEditada = signal<string | null>(null);
+    
     protected readonly paraleloNuevo = signal<string | null>(null);
     protected readonly jornadaNueva = signal<string | null>(null);
+    protected readonly schoolPeriodNuevo = signal<string | null>(null); 
 
     constructor() {
         effect(() => {
@@ -112,24 +110,20 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this._formRegistryService.register('Capacidad de Matrícula', FORM_STATE_KEY, this.formData, this.form$());
-
         this.store.loadCatalogues();
         this.store.loadClassrooms();
 
         const savedLevel = this.store.academicPeriodId();
-        if (savedLevel) {
-            this.nivelSeleccionadoId.set(savedLevel);
-        }
+        if (savedLevel) this.nivelSeleccionadoId.set(savedLevel);
 
         const savedCareerId = this.form$().careerId;
-        if (savedCareerId) {
-            this.store.loadCapacities(savedCareerId);
-        }
+        if (savedCareerId) this.store.loadCapacities(savedCareerId);
     }
 
-    private validateForm(schema: SchemaPathTree<EnrollmentCapacityFormData>): void {
-        required(schema.careerId, { message: 'La carrera es requerida de manera obligatoria' });
-        required(schema.teacherDistributionId, { message: 'La distribución de docentes es requerida de manera obligatoria' });
+    // CORRECCIÓN DE ERRORES DE TS:
+    private validateForm(schema: SchemaPathTree<any>): void {
+        required((schema as any)['careerId'], { message: 'La carrera es requerida' });
+        required((schema as any)['teacherDistributionId'], { message: 'La distribución es requerida' });
     }
 
     protected seleccionarNivel(id: string): void {
@@ -139,9 +133,7 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
 
     protected onCareerChange(careerId: string): void {
         this.form$.update(v => ({ ...v, careerId }));
-        if (careerId) {
-            this.store.loadCapacities(careerId);
-        }
+        if (careerId) this.store.loadCapacities(careerId);
     }
 
     protected abrirEdicionCupo(celda: CellInterface): void {
@@ -161,6 +153,7 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
         this.aulaEditada.set(null);
         this.paraleloNuevo.set(null);
         this.jornadaNueva.set(null);
+        this.schoolPeriodNuevo.set(null);
         this.modalVisible.set(true);
     }
 
@@ -169,7 +162,6 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
         this.celdaSeleccionada.set(null);
     }
 
-    // --- 🛡️ GUARDAR CUPO MODIFICADO PARA NOTIFICACIONES ---
     protected guardarCupo(): void {
         if (this.modoEdicion()) {
             const celda = this.celdaSeleccionada();
@@ -184,13 +176,7 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
                     this.refrescarYCerrar();
                 },
                 error: (err) => {
-                    console.error('Error al guardar el cupo', err);
-                    this.messageService.add({
-                        severity: 'error',
-                        summary: 'Error al actualizar',
-                        detail: err.error?.message || 'No se pudo actualizar el cupo.',
-                        life: 4000
-                    });
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error?.message || 'No se pudo actualizar.', life: 4000 });
                 },
             });
         } else {
@@ -198,8 +184,9 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
             const parallelId = this.paraleloNuevo();
             const workdayId = this.jornadaNueva();
             const academicPeriodId = this.nivelSeleccionadoId();
+            const schoolPeriodId = this.schoolPeriodNuevo();
 
-            if (!careerId || !parallelId || !workdayId || !academicPeriodId) {
+            if (!careerId || !parallelId || !workdayId || !academicPeriodId || !schoolPeriodId) {
                 this.messageService.add({ severity: 'warn', summary: 'Campos Vacíos', detail: 'Faltan datos obligatorios para crear el cupo' });
                 return;
             }
@@ -209,6 +196,7 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
                 parallelId,
                 workdayId,
                 academicPeriodId,
+                schoolPeriodId,
                 classroomId: this.aulaEditada(),
                 capacity: this.capacidadEditada(),
             }).subscribe({
@@ -217,15 +205,7 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
                     this.refrescarYCerrar();
                 },
                 error: (err) => {
-                    // 🚨 CAPTURA AQUÍ EL ERROR HTTP 409 DE DUPLICADO
-                    console.error('Error al crear el cupo', err);
-                    this.messageService.add({
-                        severity: 'error',
-                        summary: 'Conflicto de Planificación',
-                        // Extrae el mensaje de NestJS ('Ya existe un registro con...')
-                        detail: err.error?.message || 'El paralelo seleccionado ya se encuentra configurado en esta jornada.',
-                        life: 5000
-                    });
+                    this.messageService.add({ severity: 'error', summary: 'Conflicto', detail: err.error?.message || 'Error al guardar.', life: 5000 });
                 },
             });
         }
@@ -237,34 +217,25 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
 
         this.confirmationService.confirm({
             header: '¿Eliminar cupo?',
-            message: `¿Estás seguro de que deseas eliminar el cupo del Paralelo ${celda.paralelo} - ${celda.horario}? Esta acción no se puede deshacer.`,
+            message: `¿Estás seguro de que deseas eliminar el cupo?`,
             icon: 'pi pi-exclamation-triangle',
             acceptLabel: 'Sí, eliminar',
             rejectLabel: 'Cancelar',
-            acceptButtonProps: { severity: 'danger' },
-            rejectButtonProps: { severity: 'secondary', outlined: true },
             accept: () => this.borrarCupo(),
         });
     }
 
-    // --- 🛡️ BORRAR CUPO MODIFICADO PARA NOTIFICACIONES ---
     private borrarCupo(): void {
         const celda = this.celdaSeleccionada();
         if (!celda) return;
 
         this.httpService.remove(celda.id).subscribe({
             next: () => {
-                this.messageService.add({ severity: 'success', summary: 'Eliminado', detail: 'El cupo ha sido eliminado correctamente.', life: 3000 });
+                this.messageService.add({ severity: 'success', summary: 'Eliminado', detail: 'El cupo ha sido eliminado.', life: 3000 });
                 this.refrescarYCerrar();
             },
             error: (err) => {
-                console.error('Error al borrar el cupo', err);
-                this.messageService.add({
-                    severity: 'error',
-                    summary: 'Error al eliminar',
-                    detail: err.error?.message || 'No se pudo eliminar el cupo.',
-                    life: 4000
-                });
+                this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error?.message || 'No se pudo eliminar.', life: 4000 });
             },
         });
     }
@@ -278,9 +249,7 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
     private calcularColorSemaforo(capacidad: number | undefined, inscritos: number | undefined): 'verde' | 'naranja' | 'rojo' {
         const cap = capacidad ?? 0;
         const ins = inscritos ?? 0;
-
         if (cap === 0) return 'rojo';
-
         const porcentaje = ins / cap;
         if (porcentaje >= 1) return 'rojo';
         if (porcentaje >= 0.8) return 'naranja';

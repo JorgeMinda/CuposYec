@@ -18,36 +18,38 @@ const FORM_STATE_KEY = 'enrollment-capacity-state-v2';
 export class EnrollmentCapacityStore {
   private readonly httpService = inject(EnrollmentCapacityHttpService);
 
-  readonly state = signal<EnrollmentCapacityState>(this.loadFromStorage());
+  readonly state = signal<any>({
+    careers: [],
+    teacherDistributions: [],
+    academicPeriods: [],
+    schoolPeriods: [], // Periodos 2026-I, etc.
+    classrooms: [],
+    parallels: [],
+    workdays: [],
+    capacitiesRaw: [],
+    formState: { careerId: '', teacherDistributionId: '', academicPeriodId: '' }
+  });
 
-  // --- ALIAS EXACTOS PARA TU COMPONENTE ---
   readonly formState = computed(() => this.state().formState);
   readonly academicPeriodId = computed(() => this.state().formState.academicPeriodId);
 
-  readonly careers = computed<CareerInterface[]>(() => this.state().careers);
-  readonly teacherDistributions = computed<TeacherDistributionInterface[]>(() => this.state().teacherDistributions);
-  readonly academicPeriods = computed<CatalogueInterface[]>(() => this.state().academicPeriods);
-  readonly classrooms = computed<ClassroomInterface[]>(() => this.state().classrooms);
-  readonly parallels = computed<CatalogueInterface[]>(() => this.state().parallels);
-  readonly workdays = computed<CatalogueInterface[]>(() => this.state().workdays);
-  readonly capacitiesRaw = computed<CapacityRawInterface[]>(() => this.state().capacitiesRaw);
+  readonly careers = computed(() => this.state().careers);
+  readonly teacherDistributions = computed(() => this.state().teacherDistributions);
+  readonly academicPeriods = computed(() => this.state().academicPeriods);
+  readonly schoolPeriods = computed(() => this.state().schoolPeriods); 
+  readonly classrooms = computed(() => this.state().classrooms);
+  readonly parallels = computed(() => this.state().parallels);
+  readonly workdays = computed(() => this.state().workdays);
+  readonly capacitiesRaw = computed(() => this.state().capacitiesRaw);
 
-  // --- MÉTODO QUE TU COMPONENTE ESPERA ---
-  updateFormState(
-    newFormState: Partial<EnrollmentCapacityState['formState']>
-  ): void {
-    this.state.update((s) => ({
+  updateFormState(newFormState: Partial<any>): void {
+    this.state.update((s: any) => ({
       ...s,
       formState: {
         ...s.formState,
         ...newFormState,
       },
     }));
-  }
-
-  private loadFromStorage(): EnrollmentCapacityState {
-    const stored = sessionStorage.getItem(FORM_STATE_KEY);
-    return stored ? JSON.parse(stored) : INITIAL_ENROLLMENT_CAPACITY_STATE;
   }
 
   loadInitialData(): void {
@@ -58,7 +60,7 @@ export class EnrollmentCapacityStore {
   loadCatalogues() {
     this.httpService.findCatalogues().subscribe({
       next: (data: any) => {
-        this.state.update((s) => ({
+        this.state.update((s: any) => ({
           ...s,
           careers: data.careers || [],
           teacherDistributions: (data.teacherDistributions || []).map((td: any) => ({
@@ -66,6 +68,7 @@ export class EnrollmentCapacityStore {
             name: `${td.subject?.name ?? 'Sin materia'} - Paralelo ${td.parallel?.name ?? '?'} - ${td.workday?.name ?? 'Sin jornada'}`
           })),
           academicPeriods: data.academicPeriods || [],
+          schoolPeriods: data.schoolPeriods || [], 
           parallels: data.parallels || [],
           workdays: data.workdays || [],
         }));
@@ -78,8 +81,8 @@ export class EnrollmentCapacityStore {
 
   loadClassrooms() {
     this.httpService.findClassrooms().subscribe({
-      next: (data: ClassroomInterface[]) => {
-        this.state.update((s) => ({
+      next: (data: any) => {
+        this.state.update((s: any) => ({
           ...s,
           classrooms: data || [],
         }));
@@ -92,8 +95,8 @@ export class EnrollmentCapacityStore {
 
   loadCapacities(careerId: string) {
     this.httpService.findAll(careerId).subscribe({
-      next: (data: CapacityRawInterface[]) => {
-        this.state.update((s) => ({
+      next: (data: any) => {
+        this.state.update((s: any) => ({
           ...s,
           capacitiesRaw: data || [],
         }));
