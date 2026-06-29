@@ -11,7 +11,16 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
     return next(req).pipe(
         catchError((error: HttpErrorResponse) => {
-            if (error.error.error !== 'EXPIRED_TOKEN') {
+            // 🛡️ SI ES UN ERROR 409 (Duplicado): Ocultamos los spinners y dejamos 
+            // pasar el error limpio para que se dispare tu alerta <p-toast> personalizada
+            if (error.status === 409) {
+                coreService.hideLoading();
+                coreService.hideProcessing();
+                return throwError(() => error);
+            }
+
+            // Para cualquier otro error genérico de la app, mantiene tu lógica original
+            if (error.error?.error !== 'EXPIRED_TOKEN') {
                 coreService.hideLoading();
                 coreService.hideProcessing();
                 customMessageService.showHttpError(error.error);

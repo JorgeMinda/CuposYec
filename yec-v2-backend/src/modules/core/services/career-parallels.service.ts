@@ -1,4 +1,4 @@
-import {Inject, Injectable, NotFoundException} from '@nestjs/common';
+import {BadRequestException, ConflictException, Inject, Injectable, NotFoundException} from '@nestjs/common';
 import {Repository} from 'typeorm';
 import {CreateCareerParallelDto, UpdateCareerParallelDto} from '@core/dto';
 import {CareerParallelEntity, EnrollmentEntity} from '@core/entities';
@@ -15,6 +15,19 @@ export class CareerParallelsService {
     }
 
     async create(payload: CreateCareerParallelDto): Promise<any> {
+        const existing = await this.repository.findOne({
+            where: {
+                careerId: payload.careerId,
+                parallelId: payload.parallelId,
+                workdayId: payload.workdayId,
+                academicPeriodId: payload.academicPeriodId,
+            },
+        });
+
+        if (existing) {
+            throw new ConflictException('Ya existe un cupo para esta carrera, paralelo, jornada y nivel académico.');
+        }
+
         const newEntity = this.repository.create(payload);
         return await this.repository.save(newEntity);
     }
@@ -38,6 +51,21 @@ export class CareerParallelsService {
             throw new NotFoundException(`La carrera con id:  ${id} no se encontro`);
         }
 
+        const studentsCount = await this.enrollmentRepository.count({
+            where: {
+                careerId: entity.careerId,
+                parallelId: entity.parallelId,
+                workdayId: entity.workdayId,
+                academicPeriodId: entity.academicPeriodId,
+            },
+        });
+
+        if (studentsCount > 0) {
+            throw new BadRequestException(
+                `No se puede eliminar este cupo porque tiene ${studentsCount} estudiante(s) inscrito(s).`,
+            );
+        }
+
         return await this.repository.softRemove(entity);
     }
 
@@ -58,32 +86,32 @@ export class CareerParallelsService {
         return response.capacity;
     }
 
-   async findParallelsByCareer(careerId: string): Promise<any[]> {
-    const response = await this.repository.find({
-        relations: {
-            parallel: true,
-            workday: true,
-            academicPeriod: true,
-            classroom: true,
-        },
-        where: {careerId}
-    });
+    async findParallelsByCareer(careerId: string): Promise<any[]> {
+        const response = await this.repository.find({
+            relations: {
+                parallel: true,
+                workday: true,
+                academicPeriod: true,
+                classroom: true,
+            },
+            where: {careerId}
+        });
 
-    const withStudentsCount = await Promise.all(
-        response.map(async (item) => {
-            const studentsCount = await this.enrollmentRepository.count({
-                where: {
-                    careerId: item.careerId,
-                    parallelId: item.parallelId,
-                    workdayId: item.workdayId,
-                    academicPeriodId: item.academicPeriodId,
-                },
-            });
+        const withStudentsCount = await Promise.all(
+            response.map(async (item) => {
+                const studentsCount = await this.enrollmentRepository.count({
+                    where: {
+                        careerId: item.careerId,
+                        parallelId: item.parallelId,
+                        workdayId: item.workdayId,
+                        academicPeriodId: item.academicPeriodId,
+                    },
+                });
 
-            return { ...item, studentsCount };
-        }),
-    );
+                return { ...item, studentsCount };
+            }),
+        );
 
-    return withStudentsCount;
-}
+        return withStudentsCount;
+    }
 }

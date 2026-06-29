@@ -6,21 +6,30 @@ import { AppSidebar } from './app.sidebar';
 import { AppFooter } from './app.footer';
 import { LayoutService } from '@layout/service/layout.service';
 
+// 🛡️ 1. IMPORTACIONES DE PRIMENG PARA ALERTAS GLOBALES
+import { Toast } from 'primeng/toast';
+import { ConfirmDialog } from 'primeng/confirmdialog';
+
 @Component({
     selector: 'app-layout',
     standalone: true,
-    imports: [CommonModule, AppTopbar, AppSidebar, RouterModule, AppFooter],
-    template: `<div class="layout-wrapper" [ngClass]="containerClass()">
-        <app-topbar></app-topbar>
-        <app-sidebar></app-sidebar>
-        <div class="layout-main-container">
-            <div class="layout-main">
-                <router-outlet></router-outlet>
+    // 🛡️ 2. AGREGADOS EN IMPORTS: Toast y ConfirmDialog
+    imports: [CommonModule, AppTopbar, AppSidebar, RouterModule, AppFooter, Toast, ConfirmDialog],
+    template: `
+        <p-toast></p-toast>
+        <p-confirmDialog></p-confirmDialog>
+
+        <div class="layout-wrapper" [ngClass]="containerClass()">
+            <app-topbar></app-topbar>
+            <app-sidebar></app-sidebar>
+            <div class="layout-main-container">
+                <div class="layout-main">
+                    <router-outlet></router-outlet>
+                </div>
+                <app-footer></app-footer>
             </div>
-            <app-footer></app-footer>
-        </div>
-        <div class="layout-mask"></div>
-    </div> `
+            <div class="layout-mask"></div>
+        </div> `
 })
 export class AppLayout {
     layoutService = inject(LayoutService);
@@ -46,5 +55,5 @@ export class AppLayout {
             'layout-overlay-active': state.overlayMenuActive,
             'layout-mobile-active': state.mobileMenuActive
         };
-    })
+    });
 }

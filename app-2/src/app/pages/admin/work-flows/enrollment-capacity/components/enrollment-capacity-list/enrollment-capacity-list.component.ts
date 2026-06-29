@@ -5,6 +5,8 @@ import { Select } from 'primeng/select';
 import { form, FieldTree, required, SchemaPathTree } from '@angular/forms/signals';
 import { Dialog } from 'primeng/dialog';
 import { InputNumber } from 'primeng/inputnumber';
+import { ConfirmDialog } from 'primeng/confirmdialog';
+import { ConfirmationService, MessageService } from 'primeng/api'; // 👈 1. IMPORTADO MessageService
 import { FormRegistryService } from '@utils/services/form-registry.service';
 import { LabelDirective } from '@utils/directives/label.directive';
 import { ErrorMessageDirective } from '@utils/directives/error-message.directive';
@@ -17,12 +19,15 @@ const FORM_STATE_KEY = 'enrollmentCapacityData';
 @Component({
     selector: 'app-enrollment-capacity-list',
     standalone: true,
-    imports: [FormsModule, Select, LabelDirective, ErrorMessageDirective, Dialog, InputNumber],
+    imports: [FormsModule, Select, LabelDirective, ErrorMessageDirective, Dialog, InputNumber, ConfirmDialog],
+    providers: [ConfirmationService], // Mantenemos tu ConfirmationService local
     templateUrl: './enrollment-capacity-list.component.html'
 })
 export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
     private readonly _formRegistryService = inject(FormRegistryService);
     private readonly httpService = inject(EnrollmentCapacityHttpService);
+    private readonly confirmationService = inject(ConfirmationService);
+    private readonly messageService = inject(MessageService); // 👈 2. INYECTADO MessageService
     protected readonly store = inject(EnrollmentCapacityStore);
 
     protected readonly careers = computed(() => this.store.careers());
@@ -92,7 +97,7 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
 
     // --- ESTADO DEL MODAL DE GESTIÓN DE CUPOS ---
     protected readonly modalVisible = signal(false);
-    protected readonly modoEdicion = signal(false); // true = editar, false = crear
+    protected readonly modoEdicion = signal(false);
     protected readonly celdaSeleccionada = signal<CellInterface | null>(null);
     protected readonly capacidadEditada = signal<number>(30);
     protected readonly aulaEditada = signal<string | null>(null);
@@ -139,7 +144,6 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
         }
     }
 
-    // --- ABRIR MODAL EN MODO EDITAR ---
     protected abrirEdicionCupo(celda: CellInterface): void {
         this.modoEdicion.set(true);
         this.celdaSeleccionada.set(celda);
@@ -148,7 +152,6 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
         this.modalVisible.set(true);
     }
 
-    // --- ABRIR MODAL EN MODO CREAR ---
     protected abrirCreacionCupo(): void {
         if (!this.nivelSeleccionadoId()) return;
 
@@ -166,6 +169,7 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
         this.celdaSeleccionada.set(null);
     }
 
+    // --- 🛡️ GUARDAR CUPO MODIFICADO PARA NOTIFICACIONES ---
     protected guardarCupo(): void {
         if (this.modoEdicion()) {
             const celda = this.celdaSeleccionada();
@@ -175,8 +179,19 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
                 capacity: this.capacidadEditada(),
                 classroomId: this.aulaEditada(),
             }).subscribe({
-                next: () => this.refrescarYCerrar(),
-                error: (err) => console.error('Error al guardar el cupo', err),
+                next: () => {
+                    this.messageService.add({ severity: 'success', summary: 'Actualizado', detail: 'Cupo actualizado con éxito.', life: 3000 });
+                    this.refrescarYCerrar();
+                },
+                error: (err) => {
+                    console.error('Error al guardar el cupo', err);
+                    this.messageService.add({
+                        severity: 'error',
+                        summary: 'Error al actualizar',
+                        detail: err.error?.message || 'No se pudo actualizar el cupo.',
+                        life: 4000
+                    });
+                },
             });
         } else {
             const careerId = this.form$().careerId;
@@ -185,7 +200,7 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
             const academicPeriodId = this.nivelSeleccionadoId();
 
             if (!careerId || !parallelId || !workdayId || !academicPeriodId) {
-                console.error('Faltan datos obligatorios para crear el cupo');
+                this.messageService.add({ severity: 'warn', summary: 'Campos Vacíos', detail: 'Faltan datos obligatorios para crear el cupo' });
                 return;
             }
 
@@ -197,19 +212,60 @@ export class EnrollmentCapacityListComponent implements OnInit, OnDestroy {
                 classroomId: this.aulaEditada(),
                 capacity: this.capacidadEditada(),
             }).subscribe({
-                next: () => this.refrescarYCerrar(),
-                error: (err) => console.error('Error al crear el cupo', err),
+                next: () => {
+                    this.messageService.add({ severity: 'success', summary: 'Creado', detail: 'Nuevo cupo registrado con éxito.', life: 3000 });
+                    this.refrescarYCerrar();
+                },
+                error: (err) => {
+                    // 🚨 CAPTURA AQUÍ EL ERROR HTTP 409 DE DUPLICADO
+                    console.error('Error al crear el cupo', err);
+                    this.messageService.add({
+                        severity: 'error',
+                        summary: 'Conflicto de Planificación',
+                        // Extrae el mensaje de NestJS ('Ya existe un registro con...')
+                        detail: err.error?.message || 'El paralelo seleccionado ya se encuentra configurado en esta jornada.',
+                        life: 5000
+                    });
+                },
             });
         }
     }
 
-    protected borrarCupo(): void {
+    protected confirmarBorrado(): void {
+        const celda = this.celdaSeleccionada();
+        if (!celda) return;
+
+        this.confirmationService.confirm({
+            header: '¿Eliminar cupo?',
+            message: `¿Estás seguro de que deseas eliminar el cupo del Paralelo ${celda.paralelo} - ${celda.horario}? Esta acción no se puede deshacer.`,
+            icon: 'pi pi-exclamation-triangle',
+            acceptLabel: 'Sí, eliminar',
+            rejectLabel: 'Cancelar',
+            acceptButtonProps: { severity: 'danger' },
+            rejectButtonProps: { severity: 'secondary', outlined: true },
+            accept: () => this.borrarCupo(),
+        });
+    }
+
+    // --- 🛡️ BORRAR CUPO MODIFICADO PARA NOTIFICACIONES ---
+    private borrarCupo(): void {
         const celda = this.celdaSeleccionada();
         if (!celda) return;
 
         this.httpService.remove(celda.id).subscribe({
-            next: () => this.refrescarYCerrar(),
-            error: (err) => console.error('Error al borrar el cupo', err),
+            next: () => {
+                this.messageService.add({ severity: 'success', summary: 'Eliminado', detail: 'El cupo ha sido eliminado correctamente.', life: 3000 });
+                this.refrescarYCerrar();
+            },
+            error: (err) => {
+                console.error('Error al borrar el cupo', err);
+                this.messageService.add({
+                    severity: 'error',
+                    summary: 'Error al eliminar',
+                    detail: err.error?.message || 'No se pudo eliminar el cupo.',
+                    life: 4000
+                });
+            },
         });
     }
 

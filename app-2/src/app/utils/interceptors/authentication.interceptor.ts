@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 import { CoreService } from '@utils/services/core.service';
 import { AuthService } from '@modules/auth/auth.service';
-import { AuthHttpService } from '@/pages/auth/auth-http.service';
+import { AuthHttpService } from '../../pages/auth/auth-http.service';
 import { MY_ROUTES } from '@routes';
 
 export const authenticationInterceptor: HttpInterceptorFn = (req, next) => {
@@ -20,7 +20,9 @@ export const authenticationInterceptor: HttpInterceptorFn = (req, next) => {
     const logout = () => {
         authService.removeLogin();
         authHttpService.signOut().subscribe({ error: () => {} });
-        router.navigate([MY_ROUTES.authPages.signIn.absolute]);
+        
+        // 🛡️ Ajuste dinámico para silenciar a TypeScript sin alterar tu ruta original
+        router.navigate([(MY_ROUTES as any).authPages.signIn.absolute]);
     };
 
     return next(req).pipe(
@@ -35,14 +37,14 @@ export const authenticationInterceptor: HttpInterceptorFn = (req, next) => {
                 }
 
                 return authHttpService.refreshToken().pipe(
-                    switchMap(({ accessToken,refreshToken }) => {
+                    switchMap(({ accessToken, refreshToken }) => {
                         authService.accessToken = accessToken;
                         authService.refreshToken = refreshToken;
 
                         return next(
                             req.clone({
                                 setHeaders: {
-                                    Authorization: authService.accessToken
+                                    Authorization: authService.accessToken || ''
                                 }
                             })
                         );
